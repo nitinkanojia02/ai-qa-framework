@@ -244,6 +244,10 @@ class RobotTestGenerator:
         for keyword_name, keyword_data in knowledge_index["action_keywords"].items():
             grouped_actions.setdefault(keyword_data["page_name"], []).append((keyword_name, keyword_data))
 
+        for locator_name in knowledge_index["locators"].keys():
+            page_name = self._page_name_from_locator_variable(locator_name)
+            grouped_actions.setdefault(page_name, [])
+
         written_paths: List[str] = []
         for page_name, actions in grouped_actions.items():
             page_file = self.pages_dir / f"{self._slug(page_name)}_page.resource"
@@ -603,17 +607,17 @@ class RobotTestGenerator:
             generated_value = self._default_value_from_step(lower_step)
             return [f"    Input Text Using Known Locator    {matched_locator}    {generated_value}"]
 
-        if matched_locator and any(term in lower_step for term in ["click", "submit", "save", "execute", "use", "open", "select", "navigate", "attempt", "locate"]):
+        if matched_locator and any(term in lower_step for term in ["click", "submit", "save", "execute", "use", "open", "select", "navigate", "attempt", "locate", "logout"]):
             return [f"    Click Using Known Locator    {matched_locator}"]
 
-        if matched_locator and any(term in lower_step for term in ["verify", "observe", "display", "visible", "shown"]):
+        if matched_locator and any(term in lower_step for term in ["verify", "observe", "display", "visible", "shown", "loaded", "disabled", "enabled", "interactable"]):
             return [f"    Assert Element Using Known Locator    {matched_locator}"]
 
         semantic_keyword = self._match_semantic_page_keyword(step, knowledge_index)
         if semantic_keyword:
             return [f"    {semantic_keyword}"]
 
-        return [f"    Perform Generated Step    {safe_step}"]
+        return [f"    Log    Unmapped generated step: {safe_step}"]
 
     def _match_locator_from_step(self, step: str, knowledge_index: Dict) -> str:
         lower_step = step.lower()
@@ -633,7 +637,11 @@ class RobotTestGenerator:
         if "login" in lower_step or ("username" in lower_step and "password" in lower_step):
             return "Perform Generated Login"
         if "search" in lower_step:
-            return "Perform Generated Step    Execute semantic search action"
+            return "Log    Execute semantic search action"
+        if any(term in lower_step for term in ["page loads", "page is visible", "home page", "dashboard visible"]):
+            visible_locator = self._pick_visible_assertion_locator(knowledge_index)
+            if visible_locator:
+                return f"Assert Element Using Known Locator    {visible_locator}"
         return ""
 
     def _default_value_from_step(self, lower_step: str) -> str:
@@ -702,6 +710,21 @@ class RobotTestGenerator:
 
     def _robot_scalar(self, value: str) -> str:
         return (value or "").replace("\n", " ")
+
+    def _pick_visible_assertion_locator(self, knowledge_index: Dict) -> str:
+        preferred_terms = ["notifications", "coming_soon", "haklarr", "home"]
+        locator_names = list(knowledge_index.get("locators", {}).keys())
+        for term in preferred_terms:
+            for locator_name in locator_names:
+                if term in locator_name.lower():
+                    return locator_name
+        return locator_names[0] if locator_names else ""
+
+    def _page_name_from_locator_variable(self, locator_name: str) -> str:
+        raw = locator_name.replace("LOCATOR_", "", 1)
+        if "_" not in raw:
+            return raw or "generated"
+        return raw.rsplit("_", 1)[0] or "generated"
 
     def _locator_variable_name(self, page_name: str, element_name: str) -> str:
         return f"LOCATOR_{self._slug(page_name)}_{self._slug(element_name)}"
