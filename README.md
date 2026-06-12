@@ -49,12 +49,14 @@ The current implementation is stronger on the exploration, analysis, locator, an
 
 See:
 
+- `docs/framework-overview-and-architecture.md`
+- `docs/current-capabilities-and-status.md`
 - `docs/target-architecture-and-roadmap.md`
 - `docs/knowledge-model.md`
 - `docs/autonomous-crawling-policy.md`
 - `docs/implementation-backlog.md`
 
-These documents define the intended platform architecture, phased roadmap, knowledge model direction, safe exploration policy, and practical implementation tracks for this repository.
+These documents define the framework overview, current status, target platform architecture, phased roadmap, knowledge model direction, safe exploration policy, and practical implementation tracks for this repository.
 
 ## Implemented foundation
 
