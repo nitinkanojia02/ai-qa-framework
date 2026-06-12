@@ -220,23 +220,33 @@ class RobotTestGenerator:
         lines = [title]
         if tags:
             lines.append(f"    [Tags]    {'    '.join(tags)}")
-        lines.append("    Open Generated Workflow Start")
 
+        page_open_keyword = self._page_open_keyword_for_test_case(test_case)
+        if page_open_keyword:
+            lines.append(f"    {page_open_keyword}")
+        else:
+            lines.append("    Open Generated Workflow Start")
+
+        page_visible_keyword = self._page_visible_keyword_for_test_case(test_case)
         mapped_keyword = self._select_keyword_for_test_case(test_case, knowledge_index)
         if mapped_keyword:
             lines.append(f"    {mapped_keyword}")
         elif module_name:
             safe_module = module_name.replace("${", "$\\{")
-            lines.append(f"    Perform Generated Step    Navigate within module: {safe_module}")
+            lines.append(f"    Log    Navigate within module: {safe_module}")
 
         for step in steps:
-            rendered_step = self._render_structured_step(step, knowledge_index)
+            rendered_step = self._render_structured_step(step, knowledge_index, test_case)
             if rendered_step:
                 lines.extend(rendered_step)
 
+        if page_visible_keyword:
+            lines.append(f"    {page_visible_keyword}")
+
         for expected in expected_results:
-            safe_expected = expected.replace("${", "$\\{")
-            lines.append(f"    Validate Generated Outcome    {safe_expected}")
+            rendered_expected = self._render_expected_result(expected, knowledge_index, test_case)
+            if rendered_expected:
+                lines.extend(rendered_expected)
         return lines
 
     def _write_page_resources(self, knowledge_index: Dict) -> List[str]:
@@ -598,10 +608,10 @@ class RobotTestGenerator:
                 lines.append(f"    Perform Generated Step    {keyword_data['description']}")
         return lines
 
-    def _render_structured_step(self, step: str, knowledge_index: Dict) -> List[str]:
+    def _render_structured_step(self, step: str, knowledge_index: Dict, test_case: Dict | None = None) -> List[str]:
         safe_step = step.replace("${", "$\\{")
         lower_step = step.lower()
-        matched_locator = self._match_locator_from_step(step, knowledge_index)
+        matched_locator = self._match_locator_from_step(step, knowledge_index, test_case)
 
         if matched_locator and any(term in lower_step for term in ["enter", "input", "populate", "type", "leave"]):
             generated_value = self._default_value_from_step(lower_step)
@@ -613,35 +623,48 @@ class RobotTestGenerator:
         if matched_locator and any(term in lower_step for term in ["verify", "observe", "display", "visible", "shown", "loaded", "disabled", "enabled", "interactable"]):
             return [f"    Assert Element Using Known Locator    {matched_locator}"]
 
-        semantic_keyword = self._match_semantic_page_keyword(step, knowledge_index)
+        semantic_keyword = self._match_semantic_page_keyword(step, knowledge_index, test_case)
         if semantic_keyword:
             return [f"    {semantic_keyword}"]
 
         return [f"    Log    Unmapped generated step: {safe_step}"]
 
-    def _match_locator_from_step(self, step: str, knowledge_index: Dict) -> str:
+    def _match_locator_from_step(self, step: str, knowledge_index: Dict, test_case: Dict | None = None) -> str:
         lower_step = step.lower()
         scored_matches: List[Tuple[int, str]] = []
+        preferred_page = self._slug(self._primary_page_for_test_case(test_case or {})) if test_case else ""
         for locator_name in knowledge_index["locators"].keys():
             normalized = locator_name.lower().replace("locator_", "").replace("_", " ")
             matched_tokens = [token for token in normalized.split() if token and token in lower_step]
             if matched_tokens:
-                scored_matches.append((len(matched_tokens), locator_name))
+                score = len(matched_tokens)
+                if preferred_page and preferred_page in locator_name.lower():
+                    score += 2
+                scored_matches.append((score, locator_name))
         if not scored_matches:
             return ""
         scored_matches.sort(key=lambda item: item[0], reverse=True)
         return scored_matches[0][1]
 
-    def _match_semantic_page_keyword(self, step: str, knowledge_index: Dict) -> str:
+    def _match_semantic_page_keyword(self, step: str, knowledge_index: Dict, test_case: Dict | None = None) -> str:
         lower_step = step.lower()
+        primary_page = self._primary_page_for_test_case(test_case or {})
         if "login" in lower_step or ("username" in lower_step and "password" in lower_step):
+            if primary_page:
+                return self._robot_safe_name(f"Login Through {primary_page} Page")
             return "Perform Generated Login"
-        if "search" in lower_step:
-            return "Log    Execute semantic search action"
+        if "search" in lower_step and primary_page:
+            return self._robot_safe_name(f"Search Through {primary_page} Page")
         if any(term in lower_step for term in ["page loads", "page is visible", "home page", "dashboard visible"]):
+            if primary_page:
+                return self._robot_safe_name(f"Verify {primary_page} Page Is Visible")
             visible_locator = self._pick_visible_assertion_locator(knowledge_index)
             if visible_locator:
                 return f"Assert Element Using Known Locator    {visible_locator}"
+        if any(term in lower_step for term in ["submit form", "save form", "submit the form"]) and primary_page:
+            return self._robot_safe_name(f"Submit {primary_page} Form")
+        if any(term in lower_step for term in ["cancel form", "cancel and return", "back out"]) and primary_page:
+            return self._robot_safe_name(f"Cancel {primary_page} Form")
         return ""
 
     def _default_value_from_step(self, lower_step: str) -> str:
@@ -738,16 +761,36 @@ class RobotTestGenerator:
         return self._robot_safe_name(f"Execute {workflow_type} flow for {title}")
 
     def _page_open_keyword_for_test_case(self, test_case: Dict) -> str:
-        source_page = test_case.get("source_page", "")
+        source_page = self._primary_page_for_test_case(test_case)
         if not source_page:
             return ""
         return self._robot_safe_name(f"Open {source_page} Page")
 
     def _page_visible_keyword_for_test_case(self, test_case: Dict) -> str:
-        source_page = test_case.get("source_page", "")
+        source_page = self._primary_page_for_test_case(test_case)
         if not source_page:
             return ""
         return self._robot_safe_name(f"Verify {source_page} Page Is Visible")
+
+    def _primary_page_for_test_case(self, test_case: Dict) -> str:
+        linked_pages = test_case.get("linked_pages") or []
+        if linked_pages:
+            return linked_pages[0]
+        return test_case.get("source_page", "")
+
+    def _render_expected_result(self, expected: str, knowledge_index: Dict, test_case: Dict | None = None) -> List[str]:
+        safe_expected = expected.replace("${", "$\\{")
+        matched_locator = self._match_locator_from_step(expected, knowledge_index, test_case)
+        lower_expected = expected.lower()
+
+        if matched_locator and any(term in lower_expected for term in ["visible", "displayed", "shown", "loaded", "available", "disabled", "enabled"]):
+            return [f"    Assert Element Using Known Locator    {matched_locator}"]
+
+        semantic_keyword = self._match_semantic_page_keyword(expected, knowledge_index, test_case)
+        if semantic_keyword:
+            return [f"    {semantic_keyword}"]
+
+        return [f"    Validate Generated Outcome    {safe_expected}"]
 
     def _slug(self, value: str) -> str:
         cleaned = "_".join((value or "unknown").lower().split())
