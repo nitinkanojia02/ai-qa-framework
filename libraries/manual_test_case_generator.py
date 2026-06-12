@@ -11,7 +11,7 @@ logger = get_logger(__name__)
 class ManualTestCaseGenerator:
     def __init__(self, artifact_manager) -> None:
         self.artifact_manager = artifact_manager
-        self.output_dir = Path(self.artifact_manager.base_path) / "testcases"
+        self.output_dir = Path(self.artifact_manager.get_path("testcases"))
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
     def generate_from_knowledge(self, knowledge) -> Dict[str, str]:
