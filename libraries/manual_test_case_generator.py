@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Dict, List
 
+from libraries.scenario_intelligence import ScenarioIntelligence
 from utils.json_utils import write_json
 from utils.logger import get_logger
 from utils.time_utils import timestamp_slug, utc_now_iso
@@ -9,18 +10,19 @@ logger = get_logger(__name__)
 
 
 class ManualTestCaseGenerator:
-    def __init__(self, artifact_manager) -> None:
+    def __init__(self, artifact_manager, ai_client=None) -> None:
         self.artifact_manager = artifact_manager
         self.output_dir = Path(self.artifact_manager.get_path("testcases"))
         self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.scenario_intelligence = ScenarioIntelligence(ai_client=ai_client)
 
     def generate_from_knowledge(self, knowledge) -> Dict[str, str]:
-        workflow_groups = self._group_transitions(knowledge.workflow_transitions)
+        scenarios = self.scenario_intelligence.build_scenarios(knowledge)
         test_cases = []
         markdown_sections = ["# Generated Manual Test Cases", ""]
 
-        for index, (group_key, transitions) in enumerate(workflow_groups.items(), start=1):
-            test_case = self._build_test_case(index, group_key, transitions, knowledge)
+        for index, scenario in enumerate(scenarios, start=1):
+            test_case = self._build_test_case(index, scenario)
             test_cases.append(test_case)
             markdown_sections.extend(self._to_markdown(test_case))
             markdown_sections.append("")
@@ -63,32 +65,25 @@ class ManualTestCaseGenerator:
             grouped.setdefault(key, []).append(transition)
         return grouped
 
-    def _build_test_case(self, index: int, group_key: str, transitions: List, knowledge) -> Dict:
-        workflow_type, source_page = group_key.split(":", 1)
-        page = self._find_page(knowledge, source_page)
-        title = self._build_title(index, workflow_type, page, transitions)
-        objective = self._build_objective(workflow_type, page, transitions)
-        preconditions = self._build_preconditions(workflow_type, page)
-        steps = self._build_steps(page, transitions)
-        expected_results = self._build_expected_results(page, transitions)
-        tags = self._build_tags(workflow_type, page, transitions)
-        linked_pages = sorted({t.source_page for t in transitions if getattr(t, 'source_page', '')} | {t.destination_page for t in transitions if getattr(t, 'destination_page', '')})
-
+    def _build_test_case(self, index: int, scenario: Dict) -> Dict:
         return {
             "test_case_id": f"AUTO-MTC-{index:03d}",
-            "title": title,
-            "objective": objective,
-            "workflow_type": workflow_type,
-            "source_page": source_page,
-            "module_name": getattr(page, "module_name", "") if page else "",
-            "primary_entity": getattr(page, "primary_entity", "") if page else "",
-            "preconditions": preconditions,
-            "steps": steps,
-            "expected_results": expected_results,
-            "tags": tags,
-            "linked_pages": linked_pages,
-            "transition_count": len(transitions),
-            "generation_source": "application_knowledge",
+            "title": scenario.get("title", f"Generated Test Case {index}"),
+            "objective": scenario.get("objective", "Verify the generated scenario."),
+            "workflow_type": scenario.get("workflow_type", "general"),
+            "scenario_type": scenario.get("scenario_type", "positive"),
+            "scenario_category": scenario.get("scenario_category", "workflow"),
+            "source_page": scenario.get("source_page", ""),
+            "module_name": scenario.get("module_name", ""),
+            "primary_entity": scenario.get("primary_entity", ""),
+            "preconditions": scenario.get("preconditions", []),
+            "steps": scenario.get("steps", []),
+            "expected_results": scenario.get("expected_results", []),
+            "tags": scenario.get("tags", []),
+            "linked_pages": scenario.get("linked_pages", []),
+            "risk_level": scenario.get("risk_level", "medium"),
+            "transition_count": len(scenario.get("linked_pages", [])),
+            "generation_source": scenario.get("generation_source", "scenario_intelligence"),
         }
 
     def _build_title(self, index: int, workflow_type: str, page, transitions: List) -> str:
@@ -190,6 +185,9 @@ class ManualTestCaseGenerator:
             "",
             f"**Objective:** {test_case['objective']}",
             f"**Workflow Type:** {test_case['workflow_type']}",
+            f"**Scenario Type:** {test_case.get('scenario_type', 'positive')}",
+            f"**Scenario Category:** {test_case.get('scenario_category', 'workflow')}",
+            f"**Risk Level:** {test_case.get('risk_level', 'medium')}",
             f"**Module:** {test_case['module_name'] or 'unknown'}",
             f"**Primary Entity:** {test_case['primary_entity'] or 'unknown'}",
             f"**Tags:** {', '.join(test_case['tags'])}",

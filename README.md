@@ -76,10 +76,25 @@ The pipeline now also generates manual test case artifacts to:
 - `artifacts/testcases/generated_manual_test_cases.json`
 - `artifacts/testcases/generated_manual_test_cases.md`
 
+Manual test generation is now AI-first where enabled:
+- Playwright discovery and persisted knowledge are packaged as exploration evidence
+- AI generates structured scenarios from evidence using prompt-driven reasoning
+- the framework validates, normalizes, stores, and converts those scenarios into manual tests
+- fallback smoke-only generation is used only when AI scenario output is unavailable
+
+The manual test generation layer now expands discovered knowledge into richer scenario sets such as:
+- positive scenarios
+- negative scenarios
+- edge and validation scenarios
+- search, authentication, workflow, and data-entry scenarios
+
 The pipeline can generate Robot Framework assets to:
 - `artifacts/generated_robot_tests/generated_workflows.robot`
 - `artifacts/generated_robot_tests/generated_keywords.resource`
 - `artifacts/generated_robot_tests/generated_variables.resource`
+- `artifacts/generated_robot_tests/pages/*.resource`
+- `artifacts/generated_robot_tests/flows/*.resource`
+- `artifacts/generated_robot_tests/suites/*.robot`
 
 The generated Robot resource is now locator-aware at a foundation level and includes:
 - learned locator variables derived from persisted knowledge
@@ -89,6 +104,12 @@ The generated Robot resource is now locator-aware at a foundation level and incl
 - SeleniumLibrary-backed interaction keywords for learned locator execution
 - generated SeleniumLibrary suite setup, teardown, and session bootstrap
 - generated variable resource for base URL and login selectors
+- generated page resources for discovered page actions
+- page-specific open and visible-state keywords
+- page-specific action keywords derived from learned locators and intents
+- semantic page keywords for login, search, form submission, cancel, and primary assertions
+- generated flow resources grouped by workflow type
+- generated modular suites grouped by scenario category
 
 Robot generation is controlled by `config/framework_config.yaml`:
 - `features.enable_robot_generation: true|false`

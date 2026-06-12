@@ -1,3 +1,4 @@
+import json
 import os
 from typing import Any, Dict, Optional
 
@@ -108,6 +109,45 @@ class GainsAIClient:
         user_prompt: str,
         metadata: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
+        request_type = (metadata or {}).get("type", "")
+        if request_type == "scenario_generation":
+            mock_payload = {
+                "page_understanding": {
+                    "page_name": (metadata or {}).get("page_name", "discovered_page"),
+                    "page_type": "general",
+                    "business_purpose": "Mock-derived business page understanding.",
+                    "module_name": "discovered_module",
+                    "primary_entity": "discovered_entity",
+                    "confidence": 0.55,
+                },
+                "scenarios": [
+                    {
+                        "title": "Validate discovered page loads successfully",
+                        "objective": "Verify the discovered page is reachable and primary content is visible.",
+                        "scenario_type": "smoke",
+                        "scenario_category": "smoke",
+                        "workflow_type": "general",
+                        "risk_level": "medium",
+                        "preconditions": ["Application is reachable in the target environment."],
+                        "steps": [
+                            "Navigate to the discovered page.",
+                            "Observe the page and verify primary content is visible.",
+                        ],
+                        "expected_results": [
+                            "The page loads without unexpected errors.",
+                            "Primary controls and business content are visible.",
+                        ],
+                        "tags": ["ai-generated", "smoke", "mock-ai"],
+                    }
+                ],
+            }
+            return {
+                "provider": self.provider,
+                "model": self.model,
+                "response_text": json.dumps(mock_payload),
+                "raw_response": {"mock_mode": True, "type": request_type},
+            }
+
         preview = user_prompt[:300].replace("\n", " ")
         mock_text = (
             "MOCK_AI_RESPONSE:\n"

@@ -73,7 +73,6 @@ class AutonomousPipeline:
         self.self_healing_locator = SelfHealingLocator()
         self.workflow_memory = WorkflowMemory(self.artifact_manager, app_name, start_url)
         self.knowledge_store = KnowledgeStore(self.artifact_manager, app_name, start_url)
-        self.manual_test_case_generator = ManualTestCaseGenerator(self.artifact_manager)
         self.robot_test_generator = RobotTestGenerator(self.artifact_manager, framework_config)
         self.robot_executor = RobotExecutor(self.artifact_manager)
         self.healing_suggester = HealingSuggester()
@@ -94,6 +93,7 @@ class AutonomousPipeline:
 
         self.ai_client = GainsAIClient(self.configs["ai"])
         self.ai_summary_service = AISummaryService(self.ai_client, self.artifact_manager)
+        self.manual_test_case_generator = ManualTestCaseGenerator(self.artifact_manager, ai_client=self.ai_client)
 
     def run(self) -> ExecutionResult:
         started_at = utc_now_iso()
@@ -139,6 +139,7 @@ class AutonomousPipeline:
             if framework_config.get("features", {}).get("enable_page_analysis", True) or \
                framework_config.get("execution", {}).get("analyze_landing_page", True):
                 page_snapshot = self.page_analyzer.analyze_page(page)
+                self.knowledge_store.add_page_snapshot(page_snapshot)
                 result.executed_steps.append(
                     {
                         "step": "page_analysis",
@@ -151,7 +152,6 @@ class AutonomousPipeline:
                         "primary_entity": page_snapshot.page_analysis.metadata.get("primary_entity", ""),
                     }
                 )
-                self.knowledge_store.add_page_snapshot(page_snapshot)
                 result.artifacts["page_analysis_dom"] = page_snapshot.dom_path or ""
                 result.artifacts["page_analysis_screenshot"] = page_snapshot.screenshot_path or ""
 
@@ -242,6 +242,9 @@ class AutonomousPipeline:
                 result.artifacts["generated_robot_suite"] = robot_generation_artifacts["suite_path"]
                 result.artifacts["generated_robot_resource"] = robot_generation_artifacts["resource_path"]
                 result.artifacts["generated_robot_variables"] = robot_generation_artifacts.get("variables_path", "")
+                result.artifacts["generated_robot_page_resources"] = robot_generation_artifacts.get("page_resource_paths", [])
+                result.artifacts["generated_robot_flow_resources"] = robot_generation_artifacts.get("flow_resource_paths", [])
+                result.artifacts["generated_robot_modular_suites"] = robot_generation_artifacts.get("suite_paths", [])
             else:
                 result.executed_steps.append(
                     {
