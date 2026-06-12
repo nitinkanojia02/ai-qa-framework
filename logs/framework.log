@@ -1742,3 +1742,136 @@ libraries.gains_ai_client.GainsAIClientError: AI scenario generation returned no
 2026-06-12 19:24:37 | INFO | libraries.knowledge_store | Saved application knowledge store: artifacts\knowledge_graph\application_knowledge.json
 2026-06-12 19:24:37 | INFO | libraries.knowledge_store | Saved application knowledge snapshot: artifacts\knowledge_graph\application_knowledge_20260612_135437.json
 2026-06-12 19:24:37 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-12 19:30:29 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-12 19:30:29 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-12 19:30:29 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-12 19:30:29 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-12 19:30:29 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-12 19:30:29 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-12 19:30:29 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph', 'testcases': 'artifacts\\testcases', 'healing': 'artifacts\\healing'}
+2026-06-12 19:30:29 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-12 19:30:29 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-12 19:30:29 | INFO | libraries.semantic_enricher | SemanticEnricher initialized
+2026-06-12 19:30:29 | INFO | libraries.knowledge_store | Creating new application knowledge store: artifacts\knowledge_graph\application_knowledge.json
+2026-06-12 19:30:29 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-12 19:30:29 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-12 19:30:29 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-12 19:30:30 | INFO | libraries.browser_manager | Launching browser with screen size 1366x768
+2026-06-12 19:30:31 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-12 19:30:32 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-12 19:30:32 | INFO | libraries.authenticator | Starting login flow
+2026-06-12 19:30:32 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-12 19:30:43 | ERROR | __main__ | Pipeline execution failed: Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("//ion-icon[@name='person']")
+Traceback (most recent call last):
+  File "D:\Washtab_New\ai-qa-framework\libraries\run_autonomous_pipeline.py", line 120, in run
+    auth_result = self.authenticator.login(page)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Washtab_New\ai-qa-framework\libraries\authenticator.py", line 56, in login
+    self._prepare_element(pre_login_locator)
+  File "D:\Washtab_New\ai-qa-framework\libraries\authenticator.py", line 110, in _prepare_element
+    locator.wait_for(state="attached", timeout=10000)
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 20048, in wait_for
+    self._sync(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 741, in wait_for
+    await self._frame.wait_for_selector(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 372, in wait_for_selector
+    await self._channel.send(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("//ion-icon[@name='person']")
+
+2026-06-12 19:30:43 | INFO | libraries.knowledge_store | Saved application knowledge store: artifacts\knowledge_graph\application_knowledge.json
+2026-06-12 19:30:43 | INFO | libraries.knowledge_store | Saved application knowledge snapshot: artifacts\knowledge_graph\application_knowledge_20260612_140043.json
+2026-06-12 19:30:43 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-12 19:30:51 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-12 19:30:51 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-12 19:30:51 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-12 19:30:51 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-12 19:30:51 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-12 19:30:51 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-12 19:30:51 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph', 'testcases': 'artifacts\\testcases', 'healing': 'artifacts\\healing'}
+2026-06-12 19:30:51 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-12 19:30:51 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-12 19:30:51 | INFO | libraries.semantic_enricher | SemanticEnricher initialized
+2026-06-12 19:30:51 | INFO | libraries.knowledge_store | Loaded existing application knowledge store: artifacts\knowledge_graph\application_knowledge.json
+2026-06-12 19:30:51 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-12 19:30:51 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-12 19:30:51 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-12 19:30:52 | INFO | libraries.browser_manager | Launching browser with screen size 1366x768
+2026-06-12 19:30:53 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-12 19:30:59 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-12 19:30:59 | INFO | libraries.authenticator | Starting login flow
+2026-06-12 19:30:59 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-12 19:31:10 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/home | title=WashTAB!
+2026-06-12 19:31:10 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-12 19:31:10 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-12 19:31:10 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-12 19:31:10 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=48
+2026-06-12 19:31:10 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=17 | inputs=0 | links=0 | forms=0 | others=31
+2026-06-12 19:31:11 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260612_140110.png
+2026-06-12 19:31:11 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260612_140110.dom.json
+2026-06-12 19:31:11 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260612_140110.analysis.json
+2026-06-12 19:31:11 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-12 19:31:11 | INFO | libraries.semantic_enricher | Semantic enrichment complete | page=washtab | type=general | module=home | entity=home
+2026-06-12 19:31:11 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-12 19:31:11 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260612_140111.locators.json
+2026-06-12 19:31:11 | INFO | libraries.locator_ranker | Locator repository generated with 17 records
+2026-06-12 19:31:11 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_1
+2026-06-12 19:31:11 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_1 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]
+2026-06-12 19:31:11 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-12 19:31:11 | INFO | libraries.workflow_agent | WorkflowAgent built 17 exploration candidates
+2026-06-12 19:31:11 | INFO | libraries.navigation_predictor | Predicted next action candidate: notifications-button
+2026-06-12 19:31:11 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: notifications-button
+2026-06-12 19:31:11 | INFO | libraries.self_healing_locator | Locator matched successfully | element=notifications-button | strategy=id | by=id | value=notifications-button
+2026-06-12 19:31:14 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=notifications-button | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-12 19:31:14 | INFO | libraries.navigation_predictor | Predicted next action candidate: haklarr
+2026-06-12 19:31:14 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: haklarr
+2026-06-12 19:31:14 | INFO | libraries.self_healing_locator | Locator matched successfully | element=haklarr | strategy=text | by=xpath | value=//*[normalize-space()="haklarr"]
+2026-06-12 19:31:17 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=haklarr | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-12 19:31:17 | INFO | libraries.navigation_predictor | Predicted next action candidate: coming_soon
+2026-06-12 19:31:17 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: coming_soon
+2026-06-12 19:31:17 | INFO | libraries.self_healing_locator | Locator matched successfully | element=coming_soon | strategy=text | by=xpath | value=//*[normalize-space()="Coming Soon!"]
+2026-06-12 19:31:19 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=coming_soon | source=WashTAB! | destination=WashTAB! | status=passed
+2026-06-12 19:31:22 | INFO | libraries.navigation_predictor | Predicted next action candidate: ion-fab-button_1
+2026-06-12 19:31:22 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_1
+2026-06-12 19:31:22 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_1 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]
+2026-06-12 19:31:24 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=ion-fab-button_1 | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-12 19:31:24 | INFO | libraries.navigation_predictor | Predicted next action candidate: ion-fab-button_5
+2026-06-12 19:31:24 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_5
+2026-06-12 19:31:25 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_5 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[3]
+2026-06-12 19:31:27 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=ion-fab-button_5 | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-12 19:31:27 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=5 | successful=1 | failed=4 | skipped=0
+2026-06-12 19:31:27 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260612_140127.json
+2026-06-12 19:31:27 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260612_140127.json
+2026-06-12 19:31:27 | INFO | libraries.ai_summary_service | Generating AI page summary
+2026-06-12 19:31:27 | INFO | libraries.gains_ai_client | Prepared GAINS AI payload | metadata_type=page_summary | query_len=6166 | context_len=48
+2026-06-12 19:31:27 | INFO | libraries.gains_ai_client | Calling GAINS AI endpoint | attempt=1 | model=default
+2026-06-12 19:31:54 | INFO | libraries.gains_ai_client | GAINS AI call completed successfully
+2026-06-12 19:31:54 | INFO | libraries.ai_summary_service | Saved AI summary artifact: artifacts\analytics\washtab_20260612_140154.page_summary.json
+2026-06-12 19:31:54 | INFO | libraries.ai_summary_service | Generating AI workflow summary
+2026-06-12 19:31:54 | INFO | libraries.gains_ai_client | Prepared GAINS AI payload | metadata_type=workflow_summary | query_len=3255 | context_len=70
+2026-06-12 19:31:54 | INFO | libraries.gains_ai_client | Calling GAINS AI endpoint | attempt=1 | model=default
+2026-06-12 19:32:25 | INFO | libraries.gains_ai_client | GAINS AI call completed successfully
+2026-06-12 19:32:25 | INFO | libraries.ai_summary_service | Saved AI summary artifact: artifacts\analytics\workflow_summary_20260612_140225.json
+2026-06-12 19:32:25 | INFO | libraries.gains_ai_client | Prepared GAINS AI payload | metadata_type=scenario_generation | query_len=30072 | context_len=87
+2026-06-12 19:32:25 | INFO | libraries.gains_ai_client | Calling GAINS AI endpoint | attempt=1 | model=default
+2026-06-12 19:32:54 | INFO | libraries.gains_ai_client | GAINS AI call completed successfully
+2026-06-12 19:32:54 | INFO | libraries.scenario_intelligence | Scenario intelligence using AI-generated scenarios: 7
+2026-06-12 19:32:54 | INFO | libraries.manual_test_case_generator | Generated 7 manual test cases
+2026-06-12 19:32:54 | INFO | libraries.robot_test_generator | Generated 7 Robot Framework test cases
+2026-06-12 19:32:54 | INFO | libraries.robot_executor | Executing generated Robot suite: C:\Users\10083745\AppData\Local\Programs\Python\Python311\Scripts\robot.EXE -d artifacts/execution/robot_runs/run_20260612_140254 artifacts/generated_robot_tests/generated_workflows.robot
+2026-06-12 19:33:08 | INFO | libraries.healing_suggester | Generated 0 healing suggestions
+2026-06-12 19:33:08 | INFO | libraries.knowledge_store | Saved application knowledge store: artifacts\knowledge_graph\application_knowledge.json
+2026-06-12 19:33:08 | INFO | libraries.knowledge_store | Saved application knowledge snapshot: artifacts\knowledge_graph\application_knowledge_20260612_140308.json
+2026-06-12 19:33:08 | INFO | __main__ | Autonomous pipeline completed successfully
+2026-06-12 19:33:08 | INFO | libraries.browser_manager | Closing browser resources

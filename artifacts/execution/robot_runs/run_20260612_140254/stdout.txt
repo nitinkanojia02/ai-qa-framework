@@ -1,0 +1,30 @@
+==============================================================================
+Generated Workflows :: AI-generated Robot Framework suite from discovered a...
+==============================================================================
+Verify WashTAB Home Page Loads Successfully                           | FAIL |
+No keyword with name 'Open washtab Page' found.
+------------------------------------------------------------------------------
+Verify Logout from User Chip                                          | FAIL |
+No keyword with name 'Open washtab Page' found.
+------------------------------------------------------------------------------
+Verify Notifications Button Disabled State                            | FAIL |
+No keyword with name 'Open washtab Page' found.
+------------------------------------------------------------------------------
+Verify Home Icon Presence and Interaction                             | FAIL |
+No keyword with name 'Open washtab Page' found.
+------------------------------------------------------------------------------
+Verify Arrow Back Icon Behavior                                       | FAIL |
+No keyword with name 'Open washtab Page' found.
+------------------------------------------------------------------------------
+Verify Dashboard Tile Interaction                                     | FAIL |
+No keyword with name 'Open washtab Page' found.
+------------------------------------------------------------------------------
+Verify Coming Soon Tile is Non-Functional                             | FAIL |
+No keyword with name 'Open washtab Page' found.
+------------------------------------------------------------------------------
+Generated Workflows :: AI-generated Robot Framework suite from dis... | FAIL |
+7 tests, 0 passed, 7 failed
+==============================================================================
+Output:  D:\Washtab_New\ai-qa-framework\artifacts\execution\robot_runs\run_20260612_140254\output.xml
+Log:     D:\Washtab_New\ai-qa-framework\artifacts\execution\robot_runs\run_20260612_140254\log.html
+Report:  D:\Washtab_New\ai-qa-framework\artifacts\execution\robot_runs\run_20260612_140254\report.html

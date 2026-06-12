@@ -1,0 +1,277 @@
+{
+  "generated_at": "2026-06-12T14:02:54.914190+00:00",
+  "application_name": "WashTab Automation",
+  "test_case_count": 7,
+  "test_cases": [
+    {
+      "test_case_id": "AUTO-MTC-001",
+      "title": "Verify WashTAB Home Page Loads Successfully",
+      "objective": "Ensure the WashTAB home dashboard loads with key UI elements visible.",
+      "workflow_type": "page_load",
+      "scenario_type": "smoke",
+      "scenario_category": "smoke",
+      "source_page": "washtab",
+      "module_name": "home",
+      "primary_entity": "home",
+      "preconditions": [
+        "User has access to the WashTAB application URL",
+        "User session is active and user is logged in"
+      ],
+      "steps": [
+        "Navigate to http://172.21.166.115/washtabui/home",
+        "Observe the page header and dashboard area",
+        "Verify the presence of the home icon, notifications icon, and user chip displaying 'haklarr'",
+        "Verify that multiple dashboard tiles (innerBtn elements) are displayed"
+      ],
+      "expected_results": [
+        "WashTAB home page loads successfully without errors",
+        "Header icons such as home, notifications, and arrow back are visible",
+        "User chip displaying 'haklarr' is visible",
+        "Dashboard tiles are displayed and appear clickable"
+      ],
+      "tags": [
+        "ai-generated",
+        "dashboard",
+        "home",
+        "page_load",
+        "smoke",
+        "ui"
+      ],
+      "linked_pages": [
+        "washtab"
+      ],
+      "risk_level": "high",
+      "transition_count": 1,
+      "generation_source": "ai_scenario_generation"
+    },
+    {
+      "test_case_id": "AUTO-MTC-002",
+      "title": "Verify Logout from User Chip",
+      "objective": "Confirm that the user can log out using the logout icon in the user chip.",
+      "workflow_type": "logout",
+      "scenario_type": "workflow",
+      "scenario_category": "authentication",
+      "source_page": "washtab",
+      "module_name": "home",
+      "primary_entity": "home",
+      "preconditions": [
+        "User is logged into the WashTAB application",
+        "Home page is displayed",
+        "User chip showing 'haklarr' is visible"
+      ],
+      "steps": [
+        "Locate the user chip displaying 'haklarr' in the header",
+        "Click the log-out icon inside the user chip"
+      ],
+      "expected_results": [
+        "Logout action is triggered",
+        "User session is terminated",
+        "User is redirected away from the authenticated home page"
+      ],
+      "tags": [
+        "ai-generated",
+        "authentication",
+        "header",
+        "home",
+        "logout",
+        "workflow"
+      ],
+      "linked_pages": [
+        "washtab"
+      ],
+      "risk_level": "high",
+      "transition_count": 1,
+      "generation_source": "ai_scenario_generation"
+    },
+    {
+      "test_case_id": "AUTO-MTC-003",
+      "title": "Verify Notifications Button Disabled State",
+      "objective": "Ensure the notifications button is disabled and not clickable when aria-disabled is true.",
+      "workflow_type": "ui_state_validation",
+      "scenario_type": "validation",
+      "scenario_category": "validation",
+      "source_page": "washtab",
+      "module_name": "home",
+      "primary_entity": "home",
+      "preconditions": [
+        "User is logged in",
+        "WashTAB home page is open"
+      ],
+      "steps": [
+        "Locate the notifications button with id 'notifications-button'",
+        "Observe that the button has aria-disabled set to true",
+        "Attempt to click the notifications button"
+      ],
+      "expected_results": [
+        "Notifications button appears visually disabled",
+        "Clicking the button does not trigger any action or navigation"
+      ],
+      "tags": [
+        "ai-generated",
+        "disabled",
+        "home",
+        "notifications",
+        "ui_state_validation",
+        "ui_validation",
+        "validation"
+      ],
+      "linked_pages": [
+        "washtab"
+      ],
+      "risk_level": "medium",
+      "transition_count": 1,
+      "generation_source": "ai_scenario_generation"
+    },
+    {
+      "test_case_id": "AUTO-MTC-004",
+      "title": "Verify Home Icon Presence and Interaction",
+      "objective": "Validate that the home icon is visible and functions as a navigation control.",
+      "workflow_type": "navigation",
+      "scenario_type": "positive",
+      "scenario_category": "action",
+      "source_page": "washtab",
+      "module_name": "home",
+      "primary_entity": "home",
+      "preconditions": [
+        "User is logged in",
+        "WashTAB home page is loaded"
+      ],
+      "steps": [
+        "Locate the icon with name 'home' in the header",
+        "Click the home icon"
+      ],
+      "expected_results": [
+        "Home icon is visible in the header",
+        "Clicking the home icon keeps the user on or navigates to the home dashboard"
+      ],
+      "tags": [
+        "ai-generated",
+        "header",
+        "home",
+        "home_icon",
+        "navigation",
+        "positive"
+      ],
+      "linked_pages": [
+        "washtab"
+      ],
+      "risk_level": "medium",
+      "transition_count": 1,
+      "generation_source": "ai_scenario_generation"
+    },
+    {
+      "test_case_id": "AUTO-MTC-005",
+      "title": "Verify Arrow Back Icon Behavior",
+      "objective": "Confirm that the arrow back icon functions as a back navigation control.",
+      "workflow_type": "navigation_back",
+      "scenario_type": "workflow",
+      "scenario_category": "workflow",
+      "source_page": "washtab",
+      "module_name": "home",
+      "primary_entity": "home",
+      "preconditions": [
+        "User is logged in",
+        "User previously navigated from another page to the WashTAB home page"
+      ],
+      "steps": [
+        "Locate the icon with name 'arrow-back'",
+        "Click the arrow back icon"
+      ],
+      "expected_results": [
+        "Arrow back icon is visible in the header",
+        "Clicking the icon navigates to the previous page in the session history"
+      ],
+      "tags": [
+        "ai-generated",
+        "back",
+        "header",
+        "home",
+        "navigation",
+        "navigation_back",
+        "workflow"
+      ],
+      "linked_pages": [
+        "washtab"
+      ],
+      "risk_level": "medium",
+      "transition_count": 1,
+      "generation_source": "ai_scenario_generation"
+    },
+    {
+      "test_case_id": "AUTO-MTC-006",
+      "title": "Verify Dashboard Tile Interaction",
+      "objective": "Ensure dashboard tiles represented by innerBtn elements respond to user interaction.",
+      "workflow_type": "dashboard_navigation",
+      "scenario_type": "positive",
+      "scenario_category": "action",
+      "source_page": "washtab",
+      "module_name": "home",
+      "primary_entity": "home",
+      "preconditions": [
+        "User is logged in",
+        "WashTAB home page is loaded"
+      ],
+      "steps": [
+        "Locate one of the dashboard tiles with class 'innerBtn'",
+        "Click the tile"
+      ],
+      "expected_results": [
+        "Tile responds to user interaction",
+        "Associated action or navigation is triggered for the selected tile"
+      ],
+      "tags": [
+        "ai-generated",
+        "dashboard",
+        "dashboard_navigation",
+        "home",
+        "navigation",
+        "positive",
+        "tiles"
+      ],
+      "linked_pages": [
+        "washtab"
+      ],
+      "risk_level": "medium",
+      "transition_count": 1,
+      "generation_source": "ai_scenario_generation"
+    },
+    {
+      "test_case_id": "AUTO-MTC-007",
+      "title": "Verify Coming Soon Tile is Non-Functional",
+      "objective": "Ensure the 'Coming Soon!' tile indicates unavailable functionality and does not trigger navigation.",
+      "workflow_type": "feature_placeholder",
+      "scenario_type": "edge",
+      "scenario_category": "validation",
+      "source_page": "washtab",
+      "module_name": "home",
+      "primary_entity": "home",
+      "preconditions": [
+        "User is logged in",
+        "WashTAB home page is displayed"
+      ],
+      "steps": [
+        "Locate the tile displaying text 'Coming Soon!'",
+        "Attempt to click the 'Coming Soon!' tile"
+      ],
+      "expected_results": [
+        "The 'Coming Soon!' label is visible",
+        "Clicking the tile does not navigate to a new page or trigger an active workflow"
+      ],
+      "tags": [
+        "ai-generated",
+        "coming_soon",
+        "edge",
+        "feature_placeholder",
+        "home",
+        "placeholder",
+        "ui_validation"
+      ],
+      "linked_pages": [
+        "washtab"
+      ],
+      "risk_level": "low",
+      "transition_count": 1,
+      "generation_source": "ai_scenario_generation"
+    }
+  ]
+}

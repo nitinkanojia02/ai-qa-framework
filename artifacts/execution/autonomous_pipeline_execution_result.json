@@ -1,0 +1,210 @@
+{
+  "status": "completed",
+  "started_at": "2026-06-12T14:00:51.834157+00:00",
+  "completed_at": "2026-06-12T14:03:08.753821+00:00",
+  "executed_steps": [
+    {
+      "step": "browser_launch_and_navigation",
+      "status": "passed",
+      "url": "http://172.21.166.115/washtabui/home"
+    },
+    {
+      "step": "authentication",
+      "status": "passed",
+      "current_url": "http://172.21.166.115/washtabui/home",
+      "title": "WashTAB!"
+    },
+    {
+      "step": "page_analysis",
+      "status": "passed",
+      "page_name": "washtab",
+      "title": "WashTAB!",
+      "url": "http://172.21.166.115/washtabui/home",
+      "semantic_page_type": "general",
+      "module_name": "home",
+      "primary_entity": "home"
+    },
+    {
+      "step": "locator_repository_generation",
+      "status": "passed",
+      "locator_count": 17
+    },
+    {
+      "step": "self_healing_smoke_check",
+      "status": "passed",
+      "element_name": "ion-fab-button_1",
+      "best_locator": {
+        "by": "xpath",
+        "value": "/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]",
+        "score": 35.0,
+        "strategy": "xpath",
+        "metadata": {
+          "tag": "ion-fab-button",
+          "text": "",
+          "element_id": "",
+          "name": ""
+        }
+      }
+    },
+    {
+      "step": "intelligent_exploration",
+      "status": "passed",
+      "candidate_count": 17,
+      "attempted_count": 5,
+      "successful_count": 1,
+      "failed_count": 4,
+      "skipped_count": 0
+    },
+    {
+      "step": "ai_page_summary",
+      "status": "passed",
+      "artifact_path": "artifacts/analytics/washtab_20260612_140154.page_summary.json"
+    },
+    {
+      "step": "ai_workflow_summary",
+      "status": "passed",
+      "artifact_path": "artifacts/analytics/workflow_summary_20260612_140225.json"
+    },
+    {
+      "step": "manual_test_case_generation",
+      "status": "passed",
+      "generated_count": 7,
+      "artifact_path": "artifacts/testcases/generated_manual_test_cases.json"
+    },
+    {
+      "step": "robot_test_generation",
+      "status": "passed",
+      "generated_count": 7,
+      "suite_path": "artifacts/generated_robot_tests/generated_workflows.robot",
+      "resource_path": "artifacts/generated_robot_tests/generated_keywords.resource"
+    },
+    {
+      "step": "robot_test_execution",
+      "status": "failed",
+      "reason": "",
+      "return_code": "7",
+      "run_directory": "artifacts/execution/robot_runs/run_20260612_140254",
+      "failure_count": 7
+    },
+    {
+      "step": "healing_suggestion_generation",
+      "status": "passed",
+      "generated_count": 0,
+      "added_to_knowledge": 0,
+      "artifact_path": "artifacts/healing/healing_suggestions.json"
+    },
+    {
+      "step": "healing_application",
+      "status": "skipped",
+      "reason": "no_robot_assets_or_no_healing_suggestions"
+    }
+  ],
+  "errors": [],
+  "artifacts": {
+    "initial_screenshot": "artifacts\\screenshots\\initial_landing_page.png",
+    "post_login_screenshot": "artifacts\\screenshots\\post_login_page.png",
+    "page_analysis_dom": "artifacts\\page_data\\washtab_20260612_140110.dom.json",
+    "page_analysis_screenshot": "artifacts\\screenshots\\washtab_20260612_140110.png",
+    "workflow_graph": "artifacts/workflow_data/workflow_graph_20260612_140127.json",
+    "exploration_analytics": "artifacts/analytics/exploration_summary_20260612_140127.json",
+    "ai_page_summary": "artifacts/analytics/washtab_20260612_140154.page_summary.json",
+    "ai_workflow_summary": "artifacts/analytics/workflow_summary_20260612_140225.json",
+    "manual_test_cases_json": "artifacts/testcases/generated_manual_test_cases.json",
+    "manual_test_cases_markdown": "artifacts/testcases/generated_manual_test_cases.md",
+    "generated_robot_suite": "artifacts/generated_robot_tests/generated_workflows.robot",
+    "generated_robot_resource": "artifacts/generated_robot_tests/generated_keywords.resource",
+    "generated_robot_variables": "artifacts/generated_robot_tests/generated_variables.resource",
+    "generated_robot_page_resources": [],
+    "generated_robot_flow_resources": [
+      "artifacts/generated_robot_tests/flows/page_load_flow.resource",
+      "artifacts/generated_robot_tests/flows/logout_flow.resource",
+      "artifacts/generated_robot_tests/flows/ui_state_validation_flow.resource",
+      "artifacts/generated_robot_tests/flows/navigation_flow.resource",
+      "artifacts/generated_robot_tests/flows/navigation_back_flow.resource",
+      "artifacts/generated_robot_tests/flows/dashboard_navigation_flow.resource",
+      "artifacts/generated_robot_tests/flows/feature_placeholder_flow.resource"
+    ],
+    "generated_robot_modular_suites": [
+      "artifacts/generated_robot_tests/suites/smoke.robot",
+      "artifacts/generated_robot_tests/suites/authentication.robot",
+      "artifacts/generated_robot_tests/suites/validation.robot",
+      "artifacts/generated_robot_tests/suites/action.robot",
+      "artifacts/generated_robot_tests/suites/workflow.robot"
+    ],
+    "robot_execution_run_directory": "artifacts/execution/robot_runs/run_20260612_140254",
+    "robot_execution_output_xml": "artifacts/execution/robot_runs/run_20260612_140254/output.xml",
+    "robot_execution_log_html": "artifacts/execution/robot_runs/run_20260612_140254/log.html",
+    "robot_execution_report_html": "artifacts/execution/robot_runs/run_20260612_140254/report.html",
+    "robot_execution_stdout": "artifacts/execution/robot_runs/run_20260612_140254/stdout.txt",
+    "robot_execution_stderr": "artifacts/execution/robot_runs/run_20260612_140254/stderr.txt",
+    "robot_failure_analysis": {
+      "status": "passed",
+      "generated_at": "2026-06-12T14:03:08.750818+00:00",
+      "failed_tests": [
+        {
+          "test_name": "Verify WashTAB Home Page Loads Successfully",
+          "message": "No keyword with name 'Open washtab Page' found.",
+          "start_time": "",
+          "end_time": "",
+          "classification": "execution_failure",
+          "suspected_locator_issue": false
+        },
+        {
+          "test_name": "Verify Logout from User Chip",
+          "message": "No keyword with name 'Open washtab Page' found.",
+          "start_time": "",
+          "end_time": "",
+          "classification": "execution_failure",
+          "suspected_locator_issue": false
+        },
+        {
+          "test_name": "Verify Notifications Button Disabled State",
+          "message": "No keyword with name 'Open washtab Page' found.",
+          "start_time": "",
+          "end_time": "",
+          "classification": "execution_failure",
+          "suspected_locator_issue": false
+        },
+        {
+          "test_name": "Verify Home Icon Presence and Interaction",
+          "message": "No keyword with name 'Open washtab Page' found.",
+          "start_time": "",
+          "end_time": "",
+          "classification": "execution_failure",
+          "suspected_locator_issue": false
+        },
+        {
+          "test_name": "Verify Arrow Back Icon Behavior",
+          "message": "No keyword with name 'Open washtab Page' found.",
+          "start_time": "",
+          "end_time": "",
+          "classification": "execution_failure",
+          "suspected_locator_issue": false
+        },
+        {
+          "test_name": "Verify Dashboard Tile Interaction",
+          "message": "No keyword with name 'Open washtab Page' found.",
+          "start_time": "",
+          "end_time": "",
+          "classification": "execution_failure",
+          "suspected_locator_issue": false
+        },
+        {
+          "test_name": "Verify Coming Soon Tile is Non-Functional",
+          "message": "No keyword with name 'Open washtab Page' found.",
+          "start_time": "",
+          "end_time": "",
+          "classification": "execution_failure",
+          "suspected_locator_issue": false
+        }
+      ],
+      "failure_count": 7
+    },
+    "healing_suggestions": "artifacts/healing/healing_suggestions.json",
+    "application_knowledge": "artifacts/knowledge_graph/application_knowledge.json"
+  },
+  "metadata": {
+    "authenticated_url": "http://172.21.166.115/washtabui/home",
+    "robot_failure_count": "7"
+  }
+}

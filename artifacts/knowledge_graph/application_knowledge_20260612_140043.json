@@ -1,0 +1,33 @@
+{
+  "application_name": "WashTab Automation",
+  "start_url": "http://172.21.166.115/washtabui/home",
+  "pages": [],
+  "elements": [],
+  "locators": [],
+  "workflow_transitions": [],
+  "executions": [
+    {
+      "run_id": "2026-06-12T14:00:29.712777+00:00",
+      "status": "failed",
+      "started_at": "2026-06-12T14:00:29.712777+00:00",
+      "completed_at": "2026-06-12T14:00:43.010596+00:00",
+      "executed_steps": [
+        {
+          "step": "browser_launch_and_navigation",
+          "status": "passed",
+          "url": "http://172.21.166.115/washtabui/home"
+        }
+      ],
+      "errors": [
+        "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"//ion-icon[@name='person']\")\n"
+      ],
+      "artifacts": {
+        "initial_screenshot": "artifacts\\screenshots\\initial_landing_page.png"
+      },
+      "metadata": {}
+    }
+  ],
+  "failures": [],
+  "healing_suggestions": [],
+  "metadata": {}
+}
