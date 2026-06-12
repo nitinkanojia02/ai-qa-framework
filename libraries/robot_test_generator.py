@@ -10,8 +10,9 @@ logger = get_logger(__name__)
 
 
 class RobotTestGenerator:
-    def __init__(self, artifact_manager) -> None:
+    def __init__(self, artifact_manager, framework_config: Dict | None = None) -> None:
         self.artifact_manager = artifact_manager
+        self.framework_config = framework_config or {}
         self.output_dir = Path(self.artifact_manager.get_path("generated_robot_tests"))
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -115,7 +116,7 @@ class RobotTestGenerator:
             "    [Arguments]    ${locator_name}",
             "    ${locator}=    Get Variable Value    ${${locator_name}}    ${EMPTY}",
             "    Log    Using learned locator ${locator_name}: ${locator}",
-            "    [Return]    ${locator}",
+            "    RETURN    ${locator}",
             "",
             "Click Using Known Locator",
             "    [Arguments]    ${locator_name}",
@@ -182,7 +183,7 @@ class RobotTestGenerator:
         return lines
 
     def _build_variable_content(self) -> str:
-        framework_config = self._load_framework_config()
+        framework_config = self.framework_config or self._load_framework_config()
         application = framework_config.get("application", {})
         authentication = framework_config.get("authentication", {})
 

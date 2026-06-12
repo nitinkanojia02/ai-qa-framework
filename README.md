@@ -76,9 +76,10 @@ The pipeline now also generates manual test case artifacts to:
 - `artifacts/testcases/generated_manual_test_cases.json`
 - `artifacts/testcases/generated_manual_test_cases.md`
 
-The pipeline also generates initial Robot Framework assets to:
+The pipeline can generate Robot Framework assets to:
 - `artifacts/generated_robot_tests/generated_workflows.robot`
 - `artifacts/generated_robot_tests/generated_keywords.resource`
+- `artifacts/generated_robot_tests/generated_variables.resource`
 
 The generated Robot resource is now locator-aware at a foundation level and includes:
 - learned locator variables derived from persisted knowledge
@@ -89,7 +90,10 @@ The generated Robot resource is now locator-aware at a foundation level and incl
 - generated SeleniumLibrary suite setup, teardown, and session bootstrap
 - generated variable resource for base URL and login selectors
 
-If the `robot` CLI is available in the execution environment, the pipeline also executes the generated suite and stores outputs under:
+Robot generation is controlled by `config/framework_config.yaml`:
+- `features.enable_robot_generation: true|false`
+
+If the `robot` CLI is available in the execution environment and Robot generation is enabled, the pipeline executes the generated suite and stores outputs under:
 - `artifacts/execution/robot_runs/`
 
 The execution stage now also analyzes Robot failures and persists failure knowledge, including:

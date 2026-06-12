@@ -74,7 +74,7 @@ class AutonomousPipeline:
         self.workflow_memory = WorkflowMemory(self.artifact_manager, app_name, start_url)
         self.knowledge_store = KnowledgeStore(self.artifact_manager, app_name, start_url)
         self.manual_test_case_generator = ManualTestCaseGenerator(self.artifact_manager)
-        self.robot_test_generator = RobotTestGenerator(self.artifact_manager)
+        self.robot_test_generator = RobotTestGenerator(self.artifact_manager, framework_config)
         self.robot_executor = RobotExecutor(self.artifact_manager)
         self.healing_suggester = HealingSuggester()
         self.healing_applier = HealingApplier()
@@ -221,111 +221,49 @@ class AutonomousPipeline:
             result.artifacts["manual_test_cases_json"] = manual_test_case_artifacts["json_path"]
             result.artifacts["manual_test_cases_markdown"] = manual_test_case_artifacts["markdown_path"]
 
-            robot_generation_artifacts = self.robot_test_generator.generate_from_manual_test_cases(
-                manual_test_case_artifacts,
-                self.knowledge_store.knowledge,
-            )
-            result.executed_steps.append(
-                {
-                    "step": "robot_test_generation",
-                    "status": "passed",
-                    "generated_count": robot_generation_artifacts["count"],
-                    "suite_path": robot_generation_artifacts["suite_path"],
-                    "resource_path": robot_generation_artifacts["resource_path"],
-                }
-            )
-            result.artifacts["generated_robot_suite"] = robot_generation_artifacts["suite_path"]
-            result.artifacts["generated_robot_resource"] = robot_generation_artifacts["resource_path"]
-            result.artifacts["generated_robot_variables"] = robot_generation_artifacts.get("variables_path", "")
+            robot_generation_artifacts = {}
+            robot_execution_artifacts = {}
+            healing_result = {"suggestions": [], "count": 0, "artifact_path": ""}
 
-            robot_execution_artifacts = self.robot_executor.execute_generated_suite(
-                robot_generation_artifacts["suite_path"]
-            )
-            failure_analysis = robot_execution_artifacts.get("failure_analysis", {})
-            result.executed_steps.append(
-                {
-                    "step": "robot_test_execution",
-                    "status": robot_execution_artifacts.get("status", "unknown"),
-                    "reason": robot_execution_artifacts.get("reason", ""),
-                    "return_code": robot_execution_artifacts.get("return_code", ""),
-                    "run_directory": robot_execution_artifacts.get("run_directory", ""),
-                    "failure_count": failure_analysis.get("failure_count", 0),
-                }
-            )
-            for artifact_key in [
-                "run_directory",
-                "output_xml",
-                "log_html",
-                "report_html",
-                "stdout",
-                "stderr",
-            ]:
-                if robot_execution_artifacts.get(artifact_key):
-                    result.artifacts[f"robot_execution_{artifact_key}"] = robot_execution_artifacts[artifact_key]
-            if failure_analysis:
-                result.metadata["robot_failure_count"] = str(failure_analysis.get("failure_count", 0))
-                result.artifacts["robot_failure_analysis"] = failure_analysis
-                self.knowledge_store.add_failure_records(started_at, failure_analysis)
-                self.knowledge_store.update_locator_success_metrics(failure_analysis)
-
-            healing_artifact_path = Path(self.artifact_manager.get_path("healing")) / "healing_suggestions.json"
-            healing_result = self.healing_suggester.generate(
-                self.knowledge_store.knowledge,
-                started_at,
-                healing_artifact_path.as_posix(),
-            )
-            added_suggestions = self.knowledge_store.add_healing_suggestions(
-                healing_result["suggestions"]
-            )
-            result.executed_steps.append(
-                {
-                    "step": "healing_suggestion_generation",
-                    "status": "passed",
-                    "generated_count": healing_result.get("count", 0),
-                    "added_to_knowledge": added_suggestions,
-                    "artifact_path": healing_result.get("artifact_path", ""),
-                }
-            )
-            result.artifacts["healing_suggestions"] = healing_result.get("artifact_path", "")
-
-            healing_apply_result = self.healing_applier.apply_top_suggestion(
-                robot_generation_artifacts["resource_path"],
-                healing_result,
-            )
-            result.executed_steps.append(
-                {
-                    "step": "healing_application",
-                    "status": healing_apply_result.get("status", "unknown"),
-                    "reason": healing_apply_result.get("reason", ""),
-                    "suggestion_id": healing_apply_result.get("suggestion_id", ""),
-                    "backup_path": healing_apply_result.get("backup_path", ""),
-                }
-            )
-            if healing_apply_result.get("suggestion_id"):
-                self.knowledge_store.update_healing_suggestion_status(
-                    healing_apply_result["suggestion_id"],
-                    "applied" if healing_apply_result.get("applied") else "skipped",
-                    {
-                        "healing_application_reason": healing_apply_result.get("reason", ""),
-                        "backup_path": healing_apply_result.get("backup_path", ""),
-                    },
+            if framework_config.get("features", {}).get("enable_robot_generation", False):
+                robot_generation_artifacts = self.robot_test_generator.generate_from_manual_test_cases(
+                    manual_test_case_artifacts,
+                    self.knowledge_store.knowledge,
                 )
-            result.artifacts["healing_applied_resource"] = healing_apply_result.get("resource_path", "")
-            result.artifacts["healing_backup_resource"] = healing_apply_result.get("backup_path", "")
-
-            if healing_apply_result.get("applied"):
-                retry_execution_artifacts = self.robot_executor.execute_generated_suite(
-                    robot_generation_artifacts["suite_path"]
-                )
-                retry_failure_analysis = retry_execution_artifacts.get("failure_analysis", {})
                 result.executed_steps.append(
                     {
-                        "step": "robot_test_execution_retry",
-                        "status": retry_execution_artifacts.get("status", "unknown"),
-                        "reason": retry_execution_artifacts.get("reason", ""),
-                        "return_code": retry_execution_artifacts.get("return_code", ""),
-                        "run_directory": retry_execution_artifacts.get("run_directory", ""),
-                        "failure_count": retry_failure_analysis.get("failure_count", 0),
+                        "step": "robot_test_generation",
+                        "status": "passed",
+                        "generated_count": robot_generation_artifacts["count"],
+                        "suite_path": robot_generation_artifacts["suite_path"],
+                        "resource_path": robot_generation_artifacts["resource_path"],
+                    }
+                )
+                result.artifacts["generated_robot_suite"] = robot_generation_artifacts["suite_path"]
+                result.artifacts["generated_robot_resource"] = robot_generation_artifacts["resource_path"]
+                result.artifacts["generated_robot_variables"] = robot_generation_artifacts.get("variables_path", "")
+            else:
+                result.executed_steps.append(
+                    {
+                        "step": "robot_test_generation",
+                        "status": "skipped",
+                        "reason": "robot_generation_disabled",
+                    }
+                )
+
+            if robot_generation_artifacts:
+                robot_execution_artifacts = self.robot_executor.execute_generated_suite(
+                    robot_generation_artifacts["suite_path"]
+                )
+                failure_analysis = robot_execution_artifacts.get("failure_analysis", {})
+                result.executed_steps.append(
+                    {
+                        "step": "robot_test_execution",
+                        "status": robot_execution_artifacts.get("status", "unknown"),
+                        "reason": robot_execution_artifacts.get("reason", ""),
+                        "return_code": robot_execution_artifacts.get("return_code", ""),
+                        "run_directory": robot_execution_artifacts.get("run_directory", ""),
+                        "failure_count": failure_analysis.get("failure_count", 0),
                     }
                 )
                 for artifact_key in [
@@ -336,24 +274,126 @@ class AutonomousPipeline:
                     "stdout",
                     "stderr",
                 ]:
-                    if retry_execution_artifacts.get(artifact_key):
-                        result.artifacts[f"robot_retry_{artifact_key}"] = retry_execution_artifacts[artifact_key]
-                if retry_failure_analysis:
-                    result.artifacts["robot_retry_failure_analysis"] = retry_failure_analysis
-                    self.knowledge_store.add_failure_records(f"{started_at}_retry", retry_failure_analysis)
-                    self.knowledge_store.update_locator_success_metrics(retry_failure_analysis)
+                    if robot_execution_artifacts.get(artifact_key):
+                        result.artifacts[f"robot_execution_{artifact_key}"] = robot_execution_artifacts[artifact_key]
+                if failure_analysis:
+                    result.metadata["robot_failure_count"] = str(failure_analysis.get("failure_count", 0))
+                    result.artifacts["robot_failure_analysis"] = failure_analysis
+                    self.knowledge_store.add_failure_records(started_at, failure_analysis)
+                    self.knowledge_store.update_locator_success_metrics(failure_analysis)
+            else:
+                result.executed_steps.append(
+                    {
+                        "step": "robot_test_execution",
+                        "status": "skipped",
+                        "reason": "robot_generation_not_available",
+                    }
+                )
 
-            result.status = "phase_7_completed"
+            if framework_config.get("features", {}).get("enable_self_healing", True):
+                healing_artifact_path = Path(self.artifact_manager.get_path("healing")) / "healing_suggestions.json"
+                healing_result = self.healing_suggester.generate(
+                    self.knowledge_store.knowledge,
+                    started_at,
+                    healing_artifact_path.as_posix(),
+                )
+                added_suggestions = self.knowledge_store.add_healing_suggestions(
+                    healing_result["suggestions"]
+                )
+                result.executed_steps.append(
+                    {
+                        "step": "healing_suggestion_generation",
+                        "status": "passed",
+                        "generated_count": healing_result.get("count", 0),
+                        "added_to_knowledge": added_suggestions,
+                        "artifact_path": healing_result.get("artifact_path", ""),
+                    }
+                )
+                result.artifacts["healing_suggestions"] = healing_result.get("artifact_path", "")
+            else:
+                result.executed_steps.append(
+                    {
+                        "step": "healing_suggestion_generation",
+                        "status": "skipped",
+                        "reason": "self_healing_disabled",
+                    }
+                )
+
+            if robot_generation_artifacts and healing_result.get("suggestions"):
+                healing_apply_result = self.healing_applier.apply_top_suggestion(
+                    robot_generation_artifacts["resource_path"],
+                    healing_result,
+                )
+                result.executed_steps.append(
+                    {
+                        "step": "healing_application",
+                        "status": healing_apply_result.get("status", "unknown"),
+                        "reason": healing_apply_result.get("reason", ""),
+                        "suggestion_id": healing_apply_result.get("suggestion_id", ""),
+                        "backup_path": healing_apply_result.get("backup_path", ""),
+                    }
+                )
+                if healing_apply_result.get("suggestion_id"):
+                    self.knowledge_store.update_healing_suggestion_status(
+                        healing_apply_result["suggestion_id"],
+                        "applied" if healing_apply_result.get("applied") else "skipped",
+                        {
+                            "healing_application_reason": healing_apply_result.get("reason", ""),
+                            "backup_path": healing_apply_result.get("backup_path", ""),
+                        },
+                    )
+                result.artifacts["healing_applied_resource"] = healing_apply_result.get("resource_path", "")
+                result.artifacts["healing_backup_resource"] = healing_apply_result.get("backup_path", "")
+
+                if healing_apply_result.get("applied"):
+                    retry_execution_artifacts = self.robot_executor.execute_generated_suite(
+                        robot_generation_artifacts["suite_path"]
+                    )
+                    retry_failure_analysis = retry_execution_artifacts.get("failure_analysis", {})
+                    result.executed_steps.append(
+                        {
+                            "step": "robot_test_execution_retry",
+                            "status": retry_execution_artifacts.get("status", "unknown"),
+                            "reason": retry_execution_artifacts.get("reason", ""),
+                            "return_code": retry_execution_artifacts.get("return_code", ""),
+                            "run_directory": retry_execution_artifacts.get("run_directory", ""),
+                            "failure_count": retry_failure_analysis.get("failure_count", 0),
+                        }
+                    )
+                    for artifact_key in [
+                        "run_directory",
+                        "output_xml",
+                        "log_html",
+                        "report_html",
+                        "stdout",
+                        "stderr",
+                    ]:
+                        if retry_execution_artifacts.get(artifact_key):
+                            result.artifacts[f"robot_retry_{artifact_key}"] = retry_execution_artifacts[artifact_key]
+                    if retry_failure_analysis:
+                        result.artifacts["robot_retry_failure_analysis"] = retry_failure_analysis
+                        self.knowledge_store.add_failure_records(f"{started_at}_retry", retry_failure_analysis)
+                        self.knowledge_store.update_locator_success_metrics(retry_failure_analysis)
+            else:
+                result.executed_steps.append(
+                    {
+                        "step": "healing_application",
+                        "status": "skipped",
+                        "reason": "no_robot_assets_or_no_healing_suggestions",
+                    }
+                )
+
+            result.status = "completed"
             result.completed_at = utc_now_iso()
             self.knowledge_store.add_execution_record(result, run_id=started_at)
             knowledge_path = self.knowledge_store.persist()
             result.artifacts["application_knowledge"] = knowledge_path
 
             execution_output = str(
-                Path(self.artifact_manager.get_path("execution")) / "phase_5_execution_result.json"
+                Path(self.artifact_manager.get_path("execution")) / "autonomous_pipeline_execution_result.json"
             )
             write_json(execution_output, result.to_dict())
-            logger.info("Phase 5 pipeline completed successfully")
+            logger.info("Autonomous pipeline completed successfully")
             return result
 
         except Exception as exc:
@@ -368,7 +408,7 @@ class AutonomousPipeline:
                 result.artifacts["application_knowledge"] = knowledge_path
 
             failure_output = str(
-                Path(self.artifact_manager.get_path("execution")) / "phase_5_execution_result.json"
+                Path(self.artifact_manager.get_path("execution")) / "autonomous_pipeline_execution_result.json"
             )
             write_json(failure_output, result.to_dict())
             return result
