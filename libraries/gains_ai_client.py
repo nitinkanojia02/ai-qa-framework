@@ -1,6 +1,7 @@
 import json
 import os
 from typing import Any, Dict, Optional
+from urllib.parse import urlparse
 
 import requests
 
@@ -46,17 +47,22 @@ class GainsAIClient:
                 f"Missing AI token. Set environment variable: {self.token_env_var}"
             )
 
-        payload = {
-            "model": self.model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-            "metadata": metadata or {},
-        }
+        query = self._build_query(system_prompt, user_prompt)
+        metadata = metadata or {}
+        context = self._build_context(metadata)
+        endpoint = self._normalize_endpoint(self.endpoint)
+        data = {"query": query}
+        if context:
+            data["context"] = context
+
+        logger.info(
+            "Prepared GAINS AI payload | metadata_type=%s | query_len=%s | context_len=%s",
+            metadata.get("type", ""),
+            len(query or ""),
+            len(context or ""),
+        )
 
         headers = {
-            "Content-Type": "application/json",
             "Authorization": f"Bearer {token}",
         }
 
@@ -66,21 +72,26 @@ class GainsAIClient:
             try:
                 logger.info("Calling GAINS AI endpoint | attempt=%s | model=%s", attempt, self.model)
                 response = requests.post(
-                    self.endpoint,
-                    json=payload,
+                    endpoint,
                     headers=headers,
+                    data=data,
+                    verify=False,
                     timeout=self.request_timeout_seconds,
                 )
                 response.raise_for_status()
-                data = response.json()
+                raw_text = response.text
 
-                text = self._extract_text(data)
+                text = self._extract_text(raw_text)
                 logger.info("GAINS AI call completed successfully")
                 return {
                     "provider": self.provider,
                     "model": self.model,
                     "response_text": text,
-                    "raw_response": data,
+                    "raw_response": {
+                        "response_text": raw_text,
+                        "session_id": response.headers.get("sessionId", ""),
+                        "status_code": response.status_code,
+                    },
                 }
             except Exception as exc:
                 last_error = exc
@@ -90,11 +101,14 @@ class GainsAIClient:
                     status_code = str(exc.response.status_code)
                     response_text = (exc.response.text or "")[:1000]
                 logger.warning(
-                    "GAINS AI call failed on attempt %s: %s | status=%s | response=%s",
+                    "GAINS AI call failed on attempt %s: %s | status=%s | response=%s | data_keys=%s | metadata_type=%s | endpoint=%s",
                     attempt,
                     exc,
                     status_code,
                     response_text,
+                    list(data.keys()),
+                    metadata.get("type", ""),
+                    endpoint,
                 )
 
         raise GainsAIClientError(f"GAINS AI call failed after retries: {last_error}")
@@ -105,21 +119,51 @@ class GainsAIClient:
             normalized = normalized[2:-1].strip()
         return normalized
 
-    def _extract_text(self, response_json: Dict[str, Any]) -> str:
-        if isinstance(response_json, dict):
-            if "response" in response_json and isinstance(response_json["response"], str):
-                return response_json["response"]
+    def _build_query(self, system_prompt: str, user_prompt: str) -> str:
+        return f"System Instructions:\n{system_prompt.strip()}\n\nUser Request:\n{user_prompt.strip()}"
 
-            if "content" in response_json and isinstance(response_json["content"], str):
-                return response_json["content"]
+    def _build_context(self, metadata: Dict[str, Any]) -> str:
+        if not metadata:
+            return ""
+        try:
+            return json.dumps(metadata, ensure_ascii=False)
+        except Exception:
+            return str(metadata)
 
-            if "choices" in response_json and response_json["choices"]:
-                first_choice = response_json["choices"][0]
+    def _normalize_endpoint(self, endpoint: str) -> str:
+        normalized = (endpoint or "").strip()
+        if not normalized:
+            raise GainsAIClientError("GAINS AI endpoint is not configured.")
+        parsed = urlparse(normalized)
+        if parsed.path.endswith("/chat"):
+            return normalized
+        return normalized.rstrip("/") + "/chat"
+
+    def _extract_text(self, response_payload: Any) -> str:
+        if isinstance(response_payload, str):
+            stripped = response_payload.strip()
+            if not stripped:
+                return ""
+            try:
+                parsed = json.loads(stripped)
+                return self._extract_text(parsed)
+            except Exception:
+                return stripped
+
+        if isinstance(response_payload, dict):
+            if "response" in response_payload and isinstance(response_payload["response"], str):
+                return response_payload["response"]
+
+            if "content" in response_payload and isinstance(response_payload["content"], str):
+                return response_payload["content"]
+
+            if "choices" in response_payload and response_payload["choices"]:
+                first_choice = response_payload["choices"][0]
                 message = first_choice.get("message", {})
                 if "content" in message:
                     return message["content"]
 
-        return str(response_json)
+        return str(response_payload)
 
     def _mock_response(
         self,
