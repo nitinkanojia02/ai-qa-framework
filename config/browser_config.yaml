@@ -1,0 +1,9 @@
+browser: chromium
+headless: false
+ignore_https_errors: true
+slow_mo: 300
+viewport: null
+
+timeouts:
+  page_load_ms: 30000
+  action_ms: 10000

@@ -1,0 +1,766 @@
+2026-06-01 14:43:23 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 14:43:23 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 14:43:23 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 14:43:23 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 14:43:23 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 14:43:23 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 14:43:23 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 14:43:23 | INFO | libraries.browser_manager | Starting browser: chromium | headless=True
+2026-06-01 14:43:26 | INFO | libraries.browser_manager | Viewport set to 1920x1080
+2026-06-01 14:43:26 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/login?data=undefined
+2026-06-01 14:43:30 | INFO | __main__ | Phase 1 pipeline completed successfully
+2026-06-01 14:43:30 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 14:46:41 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 14:46:41 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 14:46:41 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 14:46:41 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 14:46:41 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 14:46:41 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 14:46:41 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 14:46:41 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 14:46:41 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 14:46:44 | INFO | libraries.browser_manager | Viewport set to 1920x1080
+2026-06-01 14:46:44 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/login?data=undefined
+2026-06-01 14:46:48 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 14:46:48 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 14:46:48 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/ | elements=25
+2026-06-01 14:46:48 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=1 | inputs=4 | links=0 | forms=0 | others=20
+2026-06-01 14:46:49 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_091648.png
+2026-06-01 14:46:49 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_091648.dom.json
+2026-06-01 14:46:49 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_091648.analysis.json
+2026-06-01 14:46:49 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/
+2026-06-01 14:46:49 | INFO | __main__ | Phase 2 pipeline completed successfully
+2026-06-01 14:46:49 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 14:52:55 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 14:52:55 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 14:52:55 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 14:52:55 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 14:52:55 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 14:52:55 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 14:52:55 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 14:52:55 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 14:52:55 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 14:52:55 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 14:52:57 | INFO | libraries.browser_manager | Viewport set to 1920x1080
+2026-06-01 14:52:57 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/login?data=undefined
+2026-06-01 14:53:01 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 14:53:01 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 14:53:01 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/ | elements=25
+2026-06-01 14:53:01 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=1 | inputs=4 | links=0 | forms=0 | others=20
+2026-06-01 14:53:02 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_092301.png
+2026-06-01 14:53:02 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_092301.dom.json
+2026-06-01 14:53:02 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_092301.analysis.json
+2026-06-01 14:53:02 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/
+2026-06-01 14:53:02 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 14:53:02 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_092302.locators.json
+2026-06-01 14:53:02 | INFO | libraries.locator_ranker | Locator repository generated with 5 records
+2026-06-01 14:53:02 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: sign_in
+2026-06-01 14:53:02 | INFO | libraries.self_healing_locator | Locator matched successfully | element=sign_in | strategy=text | by=xpath | value=//*[normalize-space()="SIGN IN"]
+2026-06-01 14:53:02 | INFO | __main__ | Phase 3 pipeline completed successfully
+2026-06-01 14:53:02 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 15:17:29 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 15:17:29 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 15:17:29 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 15:17:29 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 15:17:29 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 15:17:29 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 15:17:29 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 15:17:29 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 15:17:29 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 15:17:29 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 15:17:29 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 15:17:29 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False | start_maximized=True
+2026-06-01 15:17:31 | INFO | libraries.browser_manager | Browser launched with start-maximized argument.
+2026-06-01 15:17:31 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/login?data=undefined
+2026-06-01 15:17:36 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 15:17:36 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 15:17:36 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/ | elements=25
+2026-06-01 15:17:36 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=1 | inputs=4 | links=0 | forms=0 | others=20
+2026-06-01 15:17:36 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_094736.png
+2026-06-01 15:17:36 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_094736.dom.json
+2026-06-01 15:17:36 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_094736.analysis.json
+2026-06-01 15:17:36 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/
+2026-06-01 15:17:36 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 15:17:36 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_094736.locators.json
+2026-06-01 15:17:36 | INFO | libraries.locator_ranker | Locator repository generated with 5 records
+2026-06-01 15:17:36 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: sign_in
+2026-06-01 15:17:36 | INFO | libraries.self_healing_locator | Locator matched successfully | element=sign_in | strategy=text | by=xpath | value=//*[normalize-space()="SIGN IN"]
+2026-06-01 15:17:36 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 15:17:36 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 15:17:36 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 15:17:36 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_094736.json
+2026-06-01 15:17:36 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_094736.json
+2026-06-01 15:17:36 | INFO | __main__ | Phase 4 pipeline completed successfully
+2026-06-01 15:17:36 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 15:46:42 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 15:46:42 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 15:46:42 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 15:46:42 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 15:46:42 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 15:46:42 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 15:46:42 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 15:46:42 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 15:46:42 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 15:46:42 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 15:46:42 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 15:46:42 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False | start_maximized=False | viewport={'width': 1920, 'height': 1080}
+2026-06-01 15:46:44 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 15:46:49 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 15:46:49 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 15:46:49 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 15:47:02 | ERROR | __main__ | Pipeline execution failed: Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("//ion-button[contains(., 'Login')]") to be visible
+Traceback (most recent call last):
+  File "D:\Washtab_New\ai-qa-framework\libraries\run_autonomous_pipeline.py", line 95, in run
+    auth_result = self.authenticator.login(page)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Washtab_New\ai-qa-framework\libraries\authenticator.py", line 69, in login
+    submit_locator.wait_for(timeout=10000)
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 20048, in wait_for
+    self._sync(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 741, in wait_for
+    await self._frame.wait_for_selector(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 372, in wait_for_selector
+    await self._channel.send(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("//ion-button[contains(., 'Login')]") to be visible
+
+2026-06-01 15:47:02 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 15:48:59 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 15:48:59 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 15:48:59 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 15:48:59 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 15:48:59 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 15:48:59 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 15:48:59 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 15:48:59 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 15:48:59 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 15:48:59 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 15:48:59 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 15:48:59 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False | viewport=None
+2026-06-01 15:49:01 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 15:49:05 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 15:49:05 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 15:49:05 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 15:49:18 | ERROR | __main__ | Pipeline execution failed: Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("//ion-button[contains(., 'Login')]") to be visible
+Traceback (most recent call last):
+  File "D:\Washtab_New\ai-qa-framework\libraries\run_autonomous_pipeline.py", line 95, in run
+    auth_result = self.authenticator.login(page)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Washtab_New\ai-qa-framework\libraries\authenticator.py", line 69, in login
+    submit_locator.wait_for(timeout=10000)
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\sync_api\_generated.py", line 20048, in wait_for
+    self._sync(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_locator.py", line 741, in wait_for
+    await self._frame.wait_for_selector(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_frame.py", line 372, in wait_for_selector
+    await self._channel.send(
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\10083745\AppData\Local\Programs\Python\Python311\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("//ion-button[contains(., 'Login')]") to be visible
+
+2026-06-01 15:49:18 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 15:52:26 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 15:52:26 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 15:52:26 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 15:52:26 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 15:52:26 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 15:52:26 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 15:52:26 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 15:52:26 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 15:52:26 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 15:52:26 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 15:52:26 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 15:52:26 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False | viewport=None
+2026-06-01 15:52:28 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 15:52:33 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 15:52:33 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 15:52:33 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 15:52:41 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/login?data=undefined | title=WashTAB!
+2026-06-01 15:52:41 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 15:52:41 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 15:52:41 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 15:52:41 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=21
+2026-06-01 15:52:41 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=0 | inputs=0 | links=0 | forms=0 | others=21
+2026-06-01 15:52:42 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_102241.png
+2026-06-01 15:52:42 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_102241.dom.json
+2026-06-01 15:52:42 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_102241.analysis.json
+2026-06-01 15:52:42 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 15:52:42 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 15:52:42 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_102242.locators.json
+2026-06-01 15:52:42 | INFO | libraries.locator_ranker | Locator repository generated with 0 records
+2026-06-01 15:52:42 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 15:52:42 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 15:52:42 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 15:52:42 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_102242.json
+2026-06-01 15:52:42 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_102242.json
+2026-06-01 15:52:42 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 15:52:42 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 15:55:29 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 15:55:29 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 15:55:29 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 15:55:29 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 15:55:29 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 15:55:29 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 15:55:29 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 15:55:29 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 15:55:29 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 15:55:29 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 15:55:29 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 15:55:29 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 15:55:30 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 15:55:35 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 15:55:35 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 15:55:35 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 15:55:44 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/login?data=undefined | title=WashTAB!
+2026-06-01 15:55:44 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 15:55:44 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 15:55:44 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 15:55:44 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=21
+2026-06-01 15:55:44 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=0 | inputs=0 | links=0 | forms=0 | others=21
+2026-06-01 15:55:44 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_102544.png
+2026-06-01 15:55:44 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_102544.dom.json
+2026-06-01 15:55:44 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_102544.analysis.json
+2026-06-01 15:55:44 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 15:55:44 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 15:55:44 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_102544.locators.json
+2026-06-01 15:55:44 | INFO | libraries.locator_ranker | Locator repository generated with 0 records
+2026-06-01 15:55:44 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 15:55:44 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 15:55:44 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 15:55:44 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_102544.json
+2026-06-01 15:55:44 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_102544.json
+2026-06-01 15:55:44 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 15:55:44 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 15:58:38 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 15:58:38 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 15:58:38 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 15:58:38 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 15:58:38 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 15:58:38 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 15:58:38 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 15:58:38 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 15:58:38 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 15:58:38 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 15:58:38 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 15:58:38 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 15:58:38 | INFO | libraries.browser_manager | Launching browser with screen size 1366x768
+2026-06-01 15:58:41 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 15:58:46 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 15:58:46 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 15:58:46 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 15:58:54 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/login?data=undefined | title=WashTAB!
+2026-06-01 15:58:54 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 15:58:54 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 15:58:54 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 15:58:54 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=21
+2026-06-01 15:58:54 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=0 | inputs=0 | links=0 | forms=0 | others=21
+2026-06-01 15:58:55 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_102854.png
+2026-06-01 15:58:55 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_102854.dom.json
+2026-06-01 15:58:55 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_102854.analysis.json
+2026-06-01 15:58:55 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 15:58:55 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 15:58:55 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_102855.locators.json
+2026-06-01 15:58:55 | INFO | libraries.locator_ranker | Locator repository generated with 0 records
+2026-06-01 15:58:55 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 15:58:55 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 15:58:55 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 15:58:55 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_102855.json
+2026-06-01 15:58:55 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_102855.json
+2026-06-01 15:58:55 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 15:58:55 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 16:04:32 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 16:04:32 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 16:04:32 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 16:04:32 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 16:04:32 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 16:04:32 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 16:04:32 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 16:04:32 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 16:04:32 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 16:04:32 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 16:04:32 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 16:04:32 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 16:04:34 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 16:04:39 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 16:04:39 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 16:04:39 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 16:04:48 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/login?data=undefined | title=WashTAB!
+2026-06-01 16:04:49 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 16:04:49 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 16:04:49 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 16:04:49 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=21
+2026-06-01 16:04:49 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=0 | inputs=0 | links=0 | forms=0 | others=21
+2026-06-01 16:04:49 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_103449.png
+2026-06-01 16:04:49 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_103449.dom.json
+2026-06-01 16:04:49 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_103449.analysis.json
+2026-06-01 16:04:49 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 16:04:49 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 16:04:49 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_103449.locators.json
+2026-06-01 16:04:49 | INFO | libraries.locator_ranker | Locator repository generated with 0 records
+2026-06-01 16:04:49 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 16:04:49 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 16:04:49 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 16:04:49 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_103449.json
+2026-06-01 16:04:49 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_103449.json
+2026-06-01 16:04:49 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 16:04:49 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 16:05:08 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 16:05:08 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 16:05:08 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 16:05:08 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 16:05:08 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 16:05:08 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 16:05:08 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 16:05:08 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 16:05:08 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 16:05:08 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 16:05:08 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 16:05:08 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False | viewport=None
+2026-06-01 16:05:09 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 16:05:15 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 16:05:15 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 16:05:15 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 16:05:24 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/login?data=undefined | title=WashTAB!
+2026-06-01 16:05:25 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 16:05:25 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 16:05:25 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 16:05:25 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=21
+2026-06-01 16:05:25 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=0 | inputs=0 | links=0 | forms=0 | others=21
+2026-06-01 16:05:25 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_103525.png
+2026-06-01 16:05:25 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_103525.dom.json
+2026-06-01 16:05:25 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_103525.analysis.json
+2026-06-01 16:05:25 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 16:05:25 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 16:05:25 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_103525.locators.json
+2026-06-01 16:05:25 | INFO | libraries.locator_ranker | Locator repository generated with 0 records
+2026-06-01 16:05:25 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 16:05:25 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 16:05:25 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 16:05:25 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_103525.json
+2026-06-01 16:05:25 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_103525.json
+2026-06-01 16:05:25 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 16:05:25 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 16:05:53 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 16:05:53 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 16:05:53 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 16:05:53 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 16:05:53 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 16:05:53 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 16:05:53 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 16:05:53 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 16:05:53 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 16:05:53 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 16:05:53 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 16:05:53 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 16:05:54 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 16:06:00 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 16:06:00 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 16:06:00 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 16:06:10 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/login?data=undefined | title=WashTAB!
+2026-06-01 16:06:10 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 16:06:10 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 16:06:10 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 16:06:11 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=21
+2026-06-01 16:06:11 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=0 | inputs=0 | links=0 | forms=0 | others=21
+2026-06-01 16:06:11 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_103611.png
+2026-06-01 16:06:11 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_103611.dom.json
+2026-06-01 16:06:11 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_103611.analysis.json
+2026-06-01 16:06:11 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 16:06:11 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 16:06:11 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_103611.locators.json
+2026-06-01 16:06:11 | INFO | libraries.locator_ranker | Locator repository generated with 0 records
+2026-06-01 16:06:11 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 16:06:11 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 16:06:11 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 16:06:11 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_103611.json
+2026-06-01 16:06:11 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_103611.json
+2026-06-01 16:06:11 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 16:06:11 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 16:06:17 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 16:06:17 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 16:06:17 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 16:06:17 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 16:06:17 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 16:06:17 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 16:06:17 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 16:06:17 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 16:06:17 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 16:06:17 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 16:06:17 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 16:06:17 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 16:06:18 | INFO | libraries.browser_manager | Launching browser with screen size 1366x768
+2026-06-01 16:06:19 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 16:06:26 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 16:06:26 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 16:06:26 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 16:06:35 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/login?data=undefined | title=WashTAB!
+2026-06-01 16:06:36 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 16:06:36 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 16:06:36 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 16:06:36 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=21
+2026-06-01 16:06:36 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=0 | inputs=0 | links=0 | forms=0 | others=21
+2026-06-01 16:06:36 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_103636.png
+2026-06-01 16:06:36 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_103636.dom.json
+2026-06-01 16:06:36 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_103636.analysis.json
+2026-06-01 16:06:36 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 16:06:36 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 16:06:36 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_103636.locators.json
+2026-06-01 16:06:36 | INFO | libraries.locator_ranker | Locator repository generated with 0 records
+2026-06-01 16:06:36 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 16:06:36 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 16:06:36 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 16:06:36 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_103636.json
+2026-06-01 16:06:36 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_103636.json
+2026-06-01 16:06:36 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 16:06:36 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 17:52:55 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 17:52:55 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 17:52:55 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 17:52:55 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 17:52:55 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 17:52:55 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 17:52:55 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 17:52:55 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 17:52:55 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 17:52:55 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 17:52:55 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 17:52:55 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 17:52:56 | INFO | libraries.browser_manager | Launching browser with screen size 1366x768
+2026-06-01 17:52:58 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 17:53:03 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 17:53:03 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 17:53:03 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 17:53:13 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/login?data=undefined | title=WashTAB!
+2026-06-01 17:53:13 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 17:53:13 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 17:53:13 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 17:53:13 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=44
+2026-06-01 17:53:13 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=17 | inputs=0 | links=0 | forms=0 | others=27
+2026-06-01 17:53:13 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_122313.png
+2026-06-01 17:53:13 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_122313.dom.json
+2026-06-01 17:53:13 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_122313.analysis.json
+2026-06-01 17:53:13 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 17:53:13 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 17:53:13 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_122313.locators.json
+2026-06-01 17:53:13 | INFO | libraries.locator_ranker | Locator repository generated with 17 records
+2026-06-01 17:53:13 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_1
+2026-06-01 17:53:13 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_1 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]
+2026-06-01 17:53:13 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 17:53:13 | INFO | libraries.workflow_agent | WorkflowAgent built 0 exploration candidates
+2026-06-01 17:53:13 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=0 | successful=0 | failed=0 | skipped=0
+2026-06-01 17:53:13 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_122313.json
+2026-06-01 17:53:13 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_122313.json
+2026-06-01 17:53:13 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 17:53:13 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 17:59:33 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 17:59:33 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 17:59:33 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 17:59:33 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 17:59:33 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 17:59:33 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 17:59:33 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 17:59:33 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 17:59:33 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 17:59:33 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 17:59:33 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 17:59:33 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 17:59:33 | INFO | libraries.browser_manager | Launching browser with screen size 1366x768
+2026-06-01 17:59:35 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 17:59:40 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 17:59:40 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 17:59:40 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 17:59:51 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/home | title=WashTAB!
+2026-06-01 17:59:51 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 17:59:51 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 17:59:51 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 17:59:51 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=43
+2026-06-01 17:59:51 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=17 | inputs=0 | links=0 | forms=0 | others=26
+2026-06-01 17:59:51 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_122951.png
+2026-06-01 17:59:52 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_122951.dom.json
+2026-06-01 17:59:52 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_122951.analysis.json
+2026-06-01 17:59:52 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 17:59:52 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 17:59:52 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_122952.locators.json
+2026-06-01 17:59:52 | INFO | libraries.locator_ranker | Locator repository generated with 17 records
+2026-06-01 17:59:52 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_1
+2026-06-01 17:59:52 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_1 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]
+2026-06-01 17:59:52 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 17:59:52 | INFO | libraries.workflow_agent | WorkflowAgent built 17 exploration candidates
+2026-06-01 17:59:52 | INFO | libraries.navigation_predictor | Predicted next action candidate: home
+2026-06-01 17:59:52 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: home
+2026-06-01 17:59:52 | INFO | libraries.self_healing_locator | Locator matched successfully | element=home | strategy=name | by=name | value=home
+2026-06-01 17:59:55 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=home | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 17:59:55 | INFO | libraries.navigation_predictor | Predicted next action candidate: notifications-button
+2026-06-01 17:59:55 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: notifications-button
+2026-06-01 17:59:55 | INFO | libraries.self_healing_locator | Locator matched successfully | element=notifications-button | strategy=id | by=id | value=notifications-button
+2026-06-01 17:59:57 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=notifications-button | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 17:59:57 | INFO | libraries.navigation_predictor | Predicted next action candidate: notifications_outline
+2026-06-01 17:59:57 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: notifications_outline
+2026-06-01 17:59:58 | INFO | libraries.self_healing_locator | Locator matched successfully | element=notifications_outline | strategy=name | by=name | value=notifications-outline
+2026-06-01 18:00:03 | WARNING | libraries.intelligent_explorer | Exploration failed for element notifications_outline: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("[name=\"notifications-outline\"]").first
+    - locator resolved to <ion-icon role="img" class="md hydrated" _ngcontent-ndq-c121="" name="notifications-outline" aria-label="notifications outline"></ion-icon>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ndq-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ndq-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    9 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ndq-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2026-06-01 18:00:03 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=notifications_outline | source=WashTAB! | destination=WashTAB! | status=failed
+2026-06-01 18:00:03 | INFO | libraries.navigation_predictor | Predicted next action candidate: arrow_back
+2026-06-01 18:00:03 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: arrow_back
+2026-06-01 18:00:03 | INFO | libraries.self_healing_locator | Locator matched successfully | element=arrow_back | strategy=name | by=name | value=arrow-back
+2026-06-01 18:00:09 | WARNING | libraries.intelligent_explorer | Exploration failed for element arrow_back: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("[name=\"arrow-back\"]").first
+    - locator resolved to <ion-icon role="img" name="arrow-back" class="md hydrated" _ngcontent-ndq-c121="" aria-label="arrow back"></ion-icon>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ndq-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ndq-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    9 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ndq-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2026-06-01 18:00:09 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=arrow_back | source=WashTAB! | destination=WashTAB! | status=failed
+2026-06-01 18:00:09 | INFO | libraries.navigation_predictor | Predicted next action candidate: haklarr
+2026-06-01 18:00:09 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: haklarr
+2026-06-01 18:00:09 | INFO | libraries.self_healing_locator | Locator matched successfully | element=haklarr | strategy=text | by=xpath | value=//*[normalize-space()="haklarr"]
+2026-06-01 18:00:11 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=haklarr | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 18:00:11 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=5 | successful=0 | failed=5 | skipped=0
+2026-06-01 18:00:11 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_123011.json
+2026-06-01 18:00:11 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_123011.json
+2026-06-01 18:00:11 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 18:00:11 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 18:04:09 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 18:04:09 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 18:04:09 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 18:04:09 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 18:04:09 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 18:04:09 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 18:04:09 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 18:04:09 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 18:04:09 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 18:04:09 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 18:04:09 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 18:04:09 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 18:04:10 | INFO | libraries.browser_manager | Launching browser with screen size 1366x768
+2026-06-01 18:04:13 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 18:04:20 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 18:04:20 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 18:04:20 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 18:04:32 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/home | title=WashTAB!
+2026-06-01 18:04:33 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 18:04:33 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 18:04:33 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 18:04:33 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=43
+2026-06-01 18:04:33 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=17 | inputs=0 | links=0 | forms=0 | others=26
+2026-06-01 18:04:33 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_123433.png
+2026-06-01 18:04:33 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_123433.dom.json
+2026-06-01 18:04:33 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_123433.analysis.json
+2026-06-01 18:04:33 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 18:04:33 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 18:04:33 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_123433.locators.json
+2026-06-01 18:04:33 | INFO | libraries.locator_ranker | Locator repository generated with 17 records
+2026-06-01 18:04:33 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_1
+2026-06-01 18:04:34 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_1 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]
+2026-06-01 18:04:34 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 18:04:34 | INFO | libraries.workflow_agent | WorkflowAgent built 17 exploration candidates
+2026-06-01 18:04:34 | INFO | libraries.navigation_predictor | Predicted next action candidate: notifications-button
+2026-06-01 18:04:34 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: notifications-button
+2026-06-01 18:04:34 | INFO | libraries.self_healing_locator | Locator matched successfully | element=notifications-button | strategy=id | by=id | value=notifications-button
+2026-06-01 18:04:37 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=notifications-button | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 18:04:37 | INFO | libraries.navigation_predictor | Predicted next action candidate: haklarr
+2026-06-01 18:04:37 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: haklarr
+2026-06-01 18:04:37 | INFO | libraries.self_healing_locator | Locator matched successfully | element=haklarr | strategy=text | by=xpath | value=//*[normalize-space()="haklarr"]
+2026-06-01 18:04:40 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=haklarr | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 18:04:40 | INFO | libraries.navigation_predictor | Predicted next action candidate: ion-fab-button_1
+2026-06-01 18:04:40 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_1
+2026-06-01 18:04:40 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_1 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]
+2026-06-01 18:04:43 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=ion-fab-button_1 | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 18:04:43 | INFO | libraries.navigation_predictor | Predicted next action candidate: ion-fab-button_5
+2026-06-01 18:04:43 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_5
+2026-06-01 18:04:44 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_5 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[3]
+2026-06-01 18:04:49 | WARNING | libraries.intelligent_explorer | Exploration failed for element ion-fab-button_5: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("xpath=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[3]").first
+    - locator resolved to <ion-fab-button tappable="" color="light" aria-disabled="true" _ngcontent-ihe-c121="" class="ion-color ion-color-light md fab-button-in-list fab-button-disabled ion-activatable ion-focusable hydrated fab-button-show">…</ion-fab-button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ihe-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ihe-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    9 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ihe-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2026-06-01 18:04:49 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=ion-fab-button_5 | source=WashTAB! | destination=WashTAB! | status=failed
+2026-06-01 18:04:49 | INFO | libraries.navigation_predictor | Predicted next action candidate: div_9
+2026-06-01 18:04:49 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: div_9
+2026-06-01 18:04:50 | INFO | libraries.self_healing_locator | Locator matched successfully | element=div_9 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-content[1]/app-main-button[1]/div[1]/div[1]/div[1]
+2026-06-01 18:04:52 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=div_9 | source=WashTAB! | destination=WashTAB! | status=passed
+2026-06-01 18:04:55 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=5 | successful=1 | failed=4 | skipped=0
+2026-06-01 18:04:55 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_123455.json
+2026-06-01 18:04:55 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_123455.json
+2026-06-01 18:04:55 | INFO | __main__ | Phase 4.5 pipeline completed successfully
+2026-06-01 18:04:55 | INFO | libraries.browser_manager | Closing browser resources
+2026-06-01 18:16:24 | INFO | __main__ | Initializing autonomous pipeline
+2026-06-01 18:16:24 | INFO | libraries.config_loader | Loaded config file: config\framework_config.yaml
+2026-06-01 18:16:24 | INFO | libraries.config_loader | Loaded config file: config\browser_config.yaml
+2026-06-01 18:16:24 | INFO | libraries.config_loader | Loaded config file: config\ai_config.yaml
+2026-06-01 18:16:24 | INFO | libraries.config_loader | Loaded config file: config\locator_config.yaml
+2026-06-01 18:16:24 | INFO | libraries.config_loader | Loaded config file: config\assertion_config.yaml
+2026-06-01 18:16:24 | INFO | __main__ | Artifact directories ready: {'page_data': 'artifacts\\page_data', 'workflow_data': 'artifacts\\workflow_data', 'ai_testcases': 'artifacts\\ai_testcases', 'generated_robot_tests': 'artifacts\\generated_robot_tests', 'locator_intelligence': 'artifacts\\locator_intelligence', 'assertions': 'artifacts\\assertions', 'screenshots': 'artifacts\\screenshots', 'analytics': 'artifacts\\analytics', 'execution': 'artifacts\\execution', 'knowledge_graph': 'artifacts\\knowledge_graph'}
+2026-06-01 18:16:24 | INFO | libraries.dom_understanding_engine | DOMUnderstandingEngine initialized
+2026-06-01 18:16:24 | INFO | libraries.self_healing_locator | SelfHealingLocator initialized
+2026-06-01 18:16:24 | INFO | libraries.workflow_agent | WorkflowAgent initialized
+2026-06-01 18:16:24 | INFO | libraries.navigation_predictor | NavigationPredictor initialized
+2026-06-01 18:16:24 | INFO | libraries.browser_manager | Starting browser: chromium | headless=False
+2026-06-01 18:16:27 | INFO | libraries.browser_manager | Launching browser with screen size 1366x768
+2026-06-01 18:16:32 | INFO | libraries.browser_manager | Navigating to URL: http://172.21.166.115/washtabui/home
+2026-06-01 18:16:39 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\initial_landing_page.png
+2026-06-01 18:16:39 | INFO | libraries.authenticator | Starting login flow
+2026-06-01 18:16:39 | INFO | libraries.authenticator | Executing pre-login click step
+2026-06-01 18:16:51 | INFO | libraries.authenticator | Login successful | url=http://172.21.166.115/washtabui/home | title=WashTAB!
+2026-06-01 18:16:52 | INFO | libraries.browser_manager | Captured screenshot: artifacts\screenshots\post_login_page.png
+2026-06-01 18:16:52 | INFO | libraries.page_analyzer | Starting page analysis
+2026-06-01 18:16:52 | INFO | libraries.dom_understanding_engine | Extracting DOM intelligence from current page
+2026-06-01 18:16:52 | INFO | libraries.dom_understanding_engine | DOM extraction completed | title=WashTAB! | url=http://172.21.166.115/washtabui/home | elements=43
+2026-06-01 18:16:52 | INFO | libraries.dom_understanding_engine | Classification complete | buttons=17 | inputs=0 | links=0 | forms=0 | others=26
+2026-06-01 18:16:52 | INFO | libraries.page_analyzer | Saved page screenshot: artifacts\screenshots\washtab_20260601_124652.png
+2026-06-01 18:16:52 | INFO | libraries.page_analyzer | Saved page DOM: artifacts\page_data\washtab_20260601_124652.dom.json
+2026-06-01 18:16:52 | INFO | libraries.page_analyzer | Saved page analysis: artifacts\page_data\washtab_20260601_124652.analysis.json
+2026-06-01 18:16:52 | INFO | libraries.page_analyzer | Page analysis completed | page=washtab | title=WashTAB! | url=http://172.21.166.115/washtabui/home
+2026-06-01 18:16:52 | INFO | libraries.locator_ranker | Generating locator repository for page: washtab
+2026-06-01 18:16:52 | INFO | libraries.locator_ranker | Saved locator repository: artifacts\locator_intelligence\washtab_20260601_124652.locators.json
+2026-06-01 18:16:52 | INFO | libraries.locator_ranker | Locator repository generated with 17 records
+2026-06-01 18:16:52 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_1
+2026-06-01 18:16:53 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_1 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]
+2026-06-01 18:16:53 | INFO | libraries.intelligent_explorer | Starting intelligent exploration
+2026-06-01 18:16:53 | INFO | libraries.workflow_agent | WorkflowAgent built 17 exploration candidates
+2026-06-01 18:16:53 | INFO | libraries.navigation_predictor | Predicted next action candidate: notifications-button
+2026-06-01 18:16:53 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: notifications-button
+2026-06-01 18:16:53 | INFO | libraries.self_healing_locator | Locator matched successfully | element=notifications-button | strategy=id | by=id | value=notifications-button
+2026-06-01 18:16:56 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=notifications-button | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 18:16:56 | INFO | libraries.navigation_predictor | Predicted next action candidate: haklarr
+2026-06-01 18:16:56 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: haklarr
+2026-06-01 18:16:56 | INFO | libraries.self_healing_locator | Locator matched successfully | element=haklarr | strategy=text | by=xpath | value=//*[normalize-space()="haklarr"]
+2026-06-01 18:16:59 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=haklarr | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 18:16:59 | INFO | libraries.navigation_predictor | Predicted next action candidate: ion-fab-button_1
+2026-06-01 18:16:59 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_1
+2026-06-01 18:16:59 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_1 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[1]
+2026-06-01 18:17:01 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=ion-fab-button_1 | source=WashTAB! | destination=WashTAB! | status=no_navigation_change
+2026-06-01 18:17:01 | INFO | libraries.navigation_predictor | Predicted next action candidate: ion-fab-button_5
+2026-06-01 18:17:02 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: ion-fab-button_5
+2026-06-01 18:17:02 | INFO | libraries.self_healing_locator | Locator matched successfully | element=ion-fab-button_5 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[3]
+2026-06-01 18:17:07 | WARNING | libraries.intelligent_explorer | Exploration failed for element ion-fab-button_5: Locator.click: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("xpath=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-header[1]/ion-toolbar[1]/ion-grid[1]/ion-row[1]/ion-col[2]/ion-fab[1]/ion-fab-list[1]/ion-fab-button[3]").first
+    - locator resolved to <ion-fab-button tappable="" color="light" aria-disabled="true" _ngcontent-ica-c121="" class="ion-color ion-color-light md fab-button-in-list fab-button-disabled ion-activatable ion-focusable hydrated fab-button-show">…</ion-fab-button>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ica-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ica-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+      - waiting 100ms
+    9 × waiting for element to be visible, enabled and stable
+      - element is visible, enabled and stable
+      - scrolling into view if needed
+      - done scrolling
+      - <ion-fab-list side="start" _ngcontent-ica-c121="" id="notifications-button" class="md fab-list-side-start hydrated fab-list-active">…</ion-fab-list> intercepts pointer events
+    - retrying click action
+      - waiting 500ms
+
+2026-06-01 18:17:07 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=ion-fab-button_5 | source=WashTAB! | destination=WashTAB! | status=failed
+2026-06-01 18:17:07 | INFO | libraries.navigation_predictor | Predicted next action candidate: div_9
+2026-06-01 18:17:07 | INFO | libraries.self_healing_locator | Attempting self-healing lookup for element: div_9
+2026-06-01 18:17:08 | INFO | libraries.self_healing_locator | Locator matched successfully | element=div_9 | strategy=xpath | by=xpath | value=/html[1]/body[1]/app-root[1]/ion-app[1]/ion-router-outlet[1]/app-home[1]/app-ics-main-template[1]/ion-content[1]/app-main-button[1]/div[1]/div[1]/div[1]
+2026-06-01 18:17:10 | INFO | libraries.workflow_memory | Recorded workflow transition | action=click | target=div_9 | source=WashTAB! | destination=WashTAB! | status=passed
+2026-06-01 18:17:13 | INFO | libraries.intelligent_explorer | Exploration complete | attempted=5 | successful=1 | failed=4 | skipped=0
+2026-06-01 18:17:13 | INFO | libraries.workflow_memory | Saved workflow graph: artifacts\workflow_data\workflow_graph_20260601_124713.json
+2026-06-01 18:17:13 | INFO | libraries.exploration_analytics | Saved exploration analytics: artifacts\analytics\exploration_summary_20260601_124713.json
+2026-06-01 18:17:13 | INFO | libraries.ai_summary_service | Generating AI page summary
+2026-06-01 18:17:13 | INFO | libraries.gains_ai_client | GAINS AI client running in mock mode
+2026-06-01 18:17:13 | INFO | libraries.ai_summary_service | Saved AI summary artifact: artifacts\analytics\washtab_20260601_124713.page_summary.json
+2026-06-01 18:17:13 | INFO | libraries.ai_summary_service | Generating AI workflow summary
+2026-06-01 18:17:13 | INFO | libraries.gains_ai_client | GAINS AI client running in mock mode
+2026-06-01 18:17:13 | INFO | libraries.ai_summary_service | Saved AI summary artifact: artifacts\analytics\workflow_summary_20260601_124713.json
+2026-06-01 18:17:13 | INFO | __main__ | Phase 5 pipeline completed successfully
+2026-06-01 18:17:13 | INFO | libraries.browser_manager | Closing browser resources

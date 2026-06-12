@@ -1,0 +1,9 @@
+{
+  "type": "page_summary",
+  "page_name": "washtab",
+  "title": "WashTAB!",
+  "url": "http://172.21.166.115/washtabui/home",
+  "summary": "MOCK_AI_RESPONSE:\nSystem prompt length: 357\nUser prompt preview: Page Name: washtab Title: WashTAB! URL: http://172.21.166.115/washtabui/home Buttons Count: 17 Inputs Count: 0 Links Count: 0 Forms Count: 0 Metadata: {'forms_count': '0', 'element_count': '43', 'buttons_count': '17', 'inputs_count': '0', 'links_count': '0', 'others_count': '26'} Sample Buttons: [{'\nMetadata: {'type': 'page_summary', 'page_name': 'washtab'}",
+  "provider": "gains",
+  "model": "default"
+}

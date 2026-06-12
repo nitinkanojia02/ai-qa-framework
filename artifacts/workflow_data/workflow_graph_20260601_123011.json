@@ -1,0 +1,122 @@
+{
+  "application_name": "WashTab Automation",
+  "start_url": "http://172.21.166.115/washtabui/home",
+  "steps": [
+    {
+      "action": "click",
+      "target": "home",
+      "source_page": "WashTAB!",
+      "destination_page": "WashTAB!",
+      "locator": {
+        "by": "name",
+        "value": "home",
+        "score": 120.0,
+        "strategy": "name",
+        "metadata": {
+          "tag": "ion-icon",
+          "text": "",
+          "element_id": "",
+          "name": "home"
+        }
+      },
+      "status": "no_navigation_change",
+      "metadata": {
+        "source_url": "http://172.21.166.115/washtabui/home",
+        "destination_url": "http://172.21.166.115/washtabui/home"
+      }
+    },
+    {
+      "action": "click",
+      "target": "notifications-button",
+      "source_page": "WashTAB!",
+      "destination_page": "WashTAB!",
+      "locator": {
+        "by": "id",
+        "value": "notifications-button",
+        "score": 140.0,
+        "strategy": "id",
+        "metadata": {
+          "tag": "ion-fab-button",
+          "text": "",
+          "element_id": "notifications-button",
+          "name": ""
+        }
+      },
+      "status": "no_navigation_change",
+      "metadata": {
+        "source_url": "http://172.21.166.115/washtabui/home",
+        "destination_url": "http://172.21.166.115/washtabui/home"
+      }
+    },
+    {
+      "action": "click",
+      "target": "notifications_outline",
+      "source_page": "WashTAB!",
+      "destination_page": "WashTAB!",
+      "locator": {
+        "by": "name",
+        "value": "notifications-outline",
+        "score": 120.0,
+        "strategy": "name",
+        "metadata": {
+          "tag": "ion-icon",
+          "text": "",
+          "element_id": "",
+          "name": "notifications-outline"
+        }
+      },
+      "status": "failed",
+      "metadata": {
+        "error": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"[name=\\\"notifications-outline\\\"]\").first\n    - locator resolved to <ion-icon role=\"img\" class=\"md hydrated\" _ngcontent-ndq-c121=\"\" name=\"notifications-outline\" aria-label=\"notifications outline\"></ion-icon>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <ion-fab-list side=\"start\" _ngcontent-ndq-c121=\"\" id=\"notifications-button\" class=\"md fab-list-side-start hydrated fab-list-active\">…</ion-fab-list> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <ion-fab-list side=\"start\" _ngcontent-ndq-c121=\"\" id=\"notifications-button\" class=\"md fab-list-side-start hydrated fab-list-active\">…</ion-fab-list> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    9 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <ion-fab-list side=\"start\" _ngcontent-ndq-c121=\"\" id=\"notifications-button\" class=\"md fab-list-side-start hydrated fab-list-active\">…</ion-fab-list> intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n",
+        "source_url": "http://172.21.166.115/washtabui/home"
+      }
+    },
+    {
+      "action": "click",
+      "target": "arrow_back",
+      "source_page": "WashTAB!",
+      "destination_page": "WashTAB!",
+      "locator": {
+        "by": "name",
+        "value": "arrow-back",
+        "score": 120.0,
+        "strategy": "name",
+        "metadata": {
+          "tag": "ion-icon",
+          "text": "",
+          "element_id": "",
+          "name": "arrow-back"
+        }
+      },
+      "status": "failed",
+      "metadata": {
+        "error": "Locator.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"[name=\\\"arrow-back\\\"]\").first\n    - locator resolved to <ion-icon role=\"img\" name=\"arrow-back\" class=\"md hydrated\" _ngcontent-ndq-c121=\"\" aria-label=\"arrow back\"></ion-icon>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <ion-fab-list side=\"start\" _ngcontent-ndq-c121=\"\" id=\"notifications-button\" class=\"md fab-list-side-start hydrated fab-list-active\">…</ion-fab-list> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <ion-fab-list side=\"start\" _ngcontent-ndq-c121=\"\" id=\"notifications-button\" class=\"md fab-list-side-start hydrated fab-list-active\">…</ion-fab-list> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    9 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <ion-fab-list side=\"start\" _ngcontent-ndq-c121=\"\" id=\"notifications-button\" class=\"md fab-list-side-start hydrated fab-list-active\">…</ion-fab-list> intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n",
+        "source_url": "http://172.21.166.115/washtabui/home"
+      }
+    },
+    {
+      "action": "click",
+      "target": "haklarr",
+      "source_page": "WashTAB!",
+      "destination_page": "WashTAB!",
+      "locator": {
+        "by": "xpath",
+        "value": "//*[normalize-space()=\"haklarr\"]",
+        "score": 52.0,
+        "strategy": "text",
+        "metadata": {
+          "tag": "ion-chip",
+          "text": "haklarr",
+          "element_id": "",
+          "name": ""
+        }
+      },
+      "status": "no_navigation_change",
+      "metadata": {
+        "source_url": "http://172.21.166.115/washtabui/home",
+        "destination_url": "http://172.21.166.115/washtabui/home"
+      }
+    }
+  ],
+  "metadata": {}
+}

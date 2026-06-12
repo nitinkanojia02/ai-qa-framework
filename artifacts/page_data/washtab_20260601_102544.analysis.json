@@ -1,0 +1,22 @@
+{
+  "page_analysis": {
+    "url": "http://172.21.166.115/washtabui/home",
+    "title": "WashTAB!",
+    "page_name": "washtab",
+    "buttons": [],
+    "inputs": [],
+    "links": [],
+    "forms": [],
+    "metadata": {
+      "forms_count": "0",
+      "element_count": "21",
+      "buttons_count": "0",
+      "inputs_count": "0",
+      "links_count": "0",
+      "others_count": "21"
+    }
+  },
+  "screenshot_path": null,
+  "dom_path": null,
+  "captured_at": "2026-06-01T10:25:44.307606+00:00"
+}

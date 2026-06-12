@@ -1,0 +1,19 @@
+ranking_order:
+  - id
+  - name
+  - data-testid
+  - aria-label
+  - placeholder
+  - text
+  - xpath
+
+self_healing:
+  enabled: true
+  allow_fallbacks: true
+  max_fallbacks: 5
+
+playwright_supported_locators:
+  - id
+  - name
+  - css
+  - xpath

@@ -1,0 +1,273 @@
+[
+  {
+    "element_name": "sign_in",
+    "tag": "ion-button",
+    "best_locator": {
+      "by": "xpath",
+      "value": "//*[normalize-space()=\"SIGN IN\"]",
+      "score": 52.0,
+      "strategy": "text",
+      "metadata": {
+        "tag": "ion-button",
+        "text": "SIGN IN",
+        "element_id": "",
+        "name": ""
+      }
+    },
+    "fallback_locators": [
+      {
+        "by": "xpath",
+        "value": "/html[1]/body[1]/app-root[1]/ion-app[1]/app-login[1]/ion-content[1]/ion-grid[1]/ion-row[2]/ion-grid[1]/ion-row[3]/ion-grid[1]/ion-row[3]/ion-button[1]",
+        "score": 35.0,
+        "strategy": "xpath",
+        "metadata": {
+          "tag": "ion-button",
+          "text": "SIGN IN",
+          "element_id": "",
+          "name": ""
+        }
+      },
+      {
+        "by": "css",
+        "value": "body > app-root > ion-app.md.ion-page > app-login.ng-star-inserted > ion-content.background-image.md > ion-grid.md.hydrated > ion-row.md.hydrated:nth-of-type(2) > ion-grid.md.hydrated > ion-row.md.hydrated:nth-of-type(3) > ion-grid.md.hydrated > ion-row.center-row.md:nth-of-type(3) > ion-button.ion-button-style.md",
+        "score": 15.0,
+        "strategy": "css",
+        "metadata": {
+          "tag": "ion-button",
+          "text": "SIGN IN",
+          "element_id": "",
+          "name": ""
+        }
+      }
+    ],
+    "original_text": "SIGN IN",
+    "original_attributes": {
+      "_ngcontent-ahd-c121": "",
+      "text": "Login",
+      "shape": "round",
+      "class": "ion-button-style md button button-round button-solid ion-activatable ion-focusable hydrated"
+    }
+  },
+  {
+    "element_name": "ion-input_2",
+    "tag": "ion-input",
+    "best_locator": {
+      "by": "xpath",
+      "value": "/html[1]/body[1]/app-root[1]/ion-app[1]/app-login[1]/ion-content[1]/ion-grid[1]/ion-row[2]/ion-grid[1]/ion-row[3]/ion-grid[1]/ion-row[1]/ion-item[1]/ion-input[1]",
+      "score": 35.0,
+      "strategy": "xpath",
+      "metadata": {
+        "tag": "ion-input",
+        "text": "",
+        "element_id": "",
+        "name": ""
+      }
+    },
+    "fallback_locators": [
+      {
+        "by": "css",
+        "value": "body > app-root > ion-app.md.ion-page > app-login.ng-star-inserted > ion-content.background-image.md > ion-grid.md.hydrated > ion-row.md.hydrated:nth-of-type(2) > ion-grid.md.hydrated > ion-row.md.hydrated:nth-of-type(3) > ion-grid.md.hydrated > ion-row.center-row.ion-align-items-center:nth-of-type(1) > ion-item.center-content.ion-item-style > ion-input.login-class.ng-untouched",
+        "score": 15.0,
+        "strategy": "css",
+        "metadata": {
+          "tag": "ion-input",
+          "text": "",
+          "element_id": "",
+          "name": ""
+        }
+      }
+    ],
+    "original_text": "",
+    "original_attributes": {
+      "_ngcontent-ahd-c121": "",
+      "clearonedit": "true",
+      "autofocus": "true",
+      "class": "login-class ng-untouched ng-pristine ng-valid ion-untouched ion-pristine ion-valid sc-ion-input-md-h sc-ion-input-md-s md hydrated has-focus"
+    }
+  },
+  {
+    "element_name": "ion-input-0",
+    "tag": "input",
+    "best_locator": {
+      "by": "name",
+      "value": "ion-input-0",
+      "score": 120.0,
+      "strategy": "name",
+      "metadata": {
+        "tag": "input",
+        "text": "",
+        "element_id": "",
+        "name": "ion-input-0"
+      }
+    },
+    "fallback_locators": [
+      {
+        "by": "css",
+        "value": "[placeholder=\"User Name\"]",
+        "score": 85.0,
+        "strategy": "placeholder",
+        "metadata": {
+          "tag": "input",
+          "text": "",
+          "element_id": "",
+          "name": "ion-input-0"
+        }
+      },
+      {
+        "by": "xpath",
+        "value": "/html[1]/body[1]/app-root[1]/ion-app[1]/app-login[1]/ion-content[1]/ion-grid[1]/ion-row[2]/ion-grid[1]/ion-row[3]/ion-grid[1]/ion-row[1]/ion-item[1]/ion-input[1]/input[1]",
+        "score": 35.0,
+        "strategy": "xpath",
+        "metadata": {
+          "tag": "input",
+          "text": "",
+          "element_id": "",
+          "name": "ion-input-0"
+        }
+      },
+      {
+        "by": "css",
+        "value": "body > app-root > ion-app.md.ion-page > app-login.ng-star-inserted > ion-content.background-image.md > ion-grid.md.hydrated > ion-row.md.hydrated:nth-of-type(2) > ion-grid.md.hydrated > ion-row.md.hydrated:nth-of-type(3) > ion-grid.md.hydrated > ion-row.center-row.ion-align-items-center:nth-of-type(1) > ion-item.center-content.ion-item-style > ion-input.login-class.ng-untouched > input.native-input.sc-ion-input-md",
+        "score": 15.0,
+        "strategy": "css",
+        "metadata": {
+          "tag": "input",
+          "text": "",
+          "element_id": "",
+          "name": "ion-input-0"
+        }
+      }
+    ],
+    "original_text": "",
+    "original_attributes": {
+      "class": "native-input sc-ion-input-md",
+      "aria-labelledby": "ion-input-0-lbl",
+      "autocapitalize": "off",
+      "autocomplete": "off",
+      "autocorrect": "off",
+      "autofocus": "",
+      "name": "ion-input-0",
+      "placeholder": "User Name",
+      "type": "text",
+      "style": ""
+    }
+  },
+  {
+    "element_name": "password",
+    "tag": "ion-input",
+    "best_locator": {
+      "by": "id",
+      "value": "password",
+      "score": 140.0,
+      "strategy": "id",
+      "metadata": {
+        "tag": "ion-input",
+        "text": "",
+        "element_id": "password",
+        "name": ""
+      }
+    },
+    "fallback_locators": [
+      {
+        "by": "xpath",
+        "value": "//*[@id=\"password\"]",
+        "score": 35.0,
+        "strategy": "xpath",
+        "metadata": {
+          "tag": "ion-input",
+          "text": "",
+          "element_id": "password",
+          "name": ""
+        }
+      },
+      {
+        "by": "css",
+        "value": "#password",
+        "score": 15.0,
+        "strategy": "css",
+        "metadata": {
+          "tag": "ion-input",
+          "text": "",
+          "element_id": "password",
+          "name": ""
+        }
+      }
+    ],
+    "original_text": "",
+    "original_attributes": {
+      "_ngcontent-ahd-c121": "",
+      "type": "password",
+      "id": "password",
+      "clearonedit": "true",
+      "autocomplete": "off",
+      "class": "login-class ng-untouched ng-pristine ng-valid ion-untouched ion-pristine ion-valid sc-ion-input-md-h sc-ion-input-md-s md hydrated",
+      "style": "-webkit-text-security: disc;"
+    }
+  },
+  {
+    "element_name": "ion-input-1",
+    "tag": "input",
+    "best_locator": {
+      "by": "name",
+      "value": "ion-input-1",
+      "score": 120.0,
+      "strategy": "name",
+      "metadata": {
+        "tag": "input",
+        "text": "",
+        "element_id": "",
+        "name": "ion-input-1"
+      }
+    },
+    "fallback_locators": [
+      {
+        "by": "css",
+        "value": "[placeholder=\"Password\"]",
+        "score": 85.0,
+        "strategy": "placeholder",
+        "metadata": {
+          "tag": "input",
+          "text": "",
+          "element_id": "",
+          "name": "ion-input-1"
+        }
+      },
+      {
+        "by": "xpath",
+        "value": "/html[1]/body[1]/app-root[1]/ion-app[1]/app-login[1]/ion-content[1]/ion-grid[1]/ion-row[2]/ion-grid[1]/ion-row[3]/ion-grid[1]/ion-row[2]/ion-item[1]/ion-input[1]/input[1]",
+        "score": 35.0,
+        "strategy": "xpath",
+        "metadata": {
+          "tag": "input",
+          "text": "",
+          "element_id": "",
+          "name": "ion-input-1"
+        }
+      },
+      {
+        "by": "css",
+        "value": "body > app-root > ion-app.md.ion-page > app-login.ng-star-inserted > ion-content.background-image.md > ion-grid.md.hydrated > ion-row.md.hydrated:nth-of-type(2) > ion-grid.md.hydrated > ion-row.md.hydrated:nth-of-type(3) > ion-grid.md.hydrated > ion-row.center-row.ion-align-items-center:nth-of-type(2) > ion-item.center-content.ion-item-style > ion-input.login-class.ng-untouched > input.native-input.sc-ion-input-md",
+        "score": 15.0,
+        "strategy": "css",
+        "metadata": {
+          "tag": "input",
+          "text": "",
+          "element_id": "",
+          "name": "ion-input-1"
+        }
+      }
+    ],
+    "original_text": "",
+    "original_attributes": {
+      "class": "native-input sc-ion-input-md",
+      "aria-labelledby": "ion-input-1-lbl",
+      "autocapitalize": "off",
+      "autocomplete": "off",
+      "autocorrect": "off",
+      "name": "ion-input-1",
+      "placeholder": "Password",
+      "type": "password",
+      "style": ""
+    }
+  }
+]

@@ -1,0 +1,43 @@
+application:
+  name: WashTab Automation
+  base_url: "http://172.21.166.115/washtabui/home"
+  environment: qa
+
+authentication:
+  enabled: true
+  login_url: ""
+  username: "haklarr"
+  password: "Icstunnel1"
+
+  pre_login_click_required: true
+  pre_login_click_selector: "//ion-icon[@name='person']"
+  pre_login_click_type: "xpath"
+
+  username_selector: "//input[@placeholder='User Name']"
+  username_selector_type: "xpath"
+
+  password_selector: "//input[@placeholder='Password']"
+  password_selector_type: "xpath"
+
+  submit_selector: "//ion-button[contains(normalize-space(.), 'SIGN IN')]"
+  submit_selector_type: "xpath"
+
+  success_url_contains: ""
+  success_selector: "//ion-icon[@name='log-out']"
+  success_selector_type: "xpath"
+  post_login_wait_seconds: 5
+
+execution:
+  capture_screenshots: true
+  save_dom_snapshot: true
+  output_base_dir: artifacts
+  analyze_landing_page: true
+  max_exploration_actions: 5
+
+features:
+  enable_ai: true
+  enable_autonomous_exploration: true
+  enable_workflow_learning: true
+  enable_robot_generation: false
+  enable_self_healing: true
+  enable_page_analysis: true

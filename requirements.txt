@@ -1,0 +1,9 @@
+playwright
+requests
+robotframework
+robotframework-seleniumlibrary
+robotframework-databaselibrary
+robotframework-pabot
+pyodbc
+pillow
+pyyaml

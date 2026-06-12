@@ -1,0 +1,7 @@
+default_assertions:
+  - verify_page_loaded
+  - verify_title_present
+  - verify_url_contains
+  - verify_key_element_visible
+negative_assertions_enabled: true
+text_validation_enabled: true

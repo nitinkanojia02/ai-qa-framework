@@ -1,0 +1,8 @@
+{
+  "type": "workflow_summary",
+  "application_name": "WashTab Automation",
+  "start_url": "http://172.21.166.115/washtabui/home",
+  "summary": "MOCK_AI_RESPONSE:\nSystem prompt length: 424\nUser prompt preview: Application Name: WashTab Automation Start URL: http://172.21.166.115/washtabui/home Workflow Step Count: 5 Workflow Steps: [{'action': 'click', 'target': 'notifications-button', 'source_page': 'WashTAB!', 'destination_page': 'WashTAB!', 'locator': {'by': 'id', 'value': 'notifications-button', 'scor\nMetadata: {'type': 'workflow_summary', 'application_name': 'WashTab Automation'}",
+  "provider": "gains",
+  "model": "default"
+}
