@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Dict, List
 
+from libraries.gains_ai_client import GainsAIClientError
 from libraries.scenario_intelligence import ScenarioIntelligence
 from utils.json_utils import write_json
 from utils.logger import get_logger
@@ -18,6 +19,8 @@ class ManualTestCaseGenerator:
 
     def generate_from_knowledge(self, knowledge) -> Dict[str, str]:
         scenarios = self.scenario_intelligence.build_scenarios(knowledge)
+        if not scenarios:
+            raise GainsAIClientError("AI scenario generation did not produce any manual test cases.")
         test_cases = []
         markdown_sections = ["# Generated Manual Test Cases", ""]
 

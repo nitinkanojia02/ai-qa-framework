@@ -6,7 +6,7 @@ from libraries.authenticator import Authenticator
 from libraries.browser_manager import BrowserManager
 from libraries.config_loader import ConfigLoader
 from libraries.exploration_analytics import ExplorationAnalytics
-from libraries.gains_ai_client import GainsAIClient
+from libraries.gains_ai_client import GainsAIClient, GainsAIClientError
 from libraries.intelligent_explorer import IntelligentExplorer
 from libraries.knowledge_store import KnowledgeStore
 from libraries.locator_ranker import LocatorRanker
@@ -432,27 +432,47 @@ class AutonomousPipeline:
             return
 
         if page_snapshot:
-            page_summary = self.ai_summary_service.generate_page_summary(page_snapshot)
-            result.executed_steps.append(
-                {
-                    "step": "ai_page_summary",
-                    "status": "passed",
-                    "artifact_path": page_summary["artifact_path"],
-                }
-            )
-            result.artifacts["ai_page_summary"] = page_summary["artifact_path"]
+            try:
+                page_summary = self.ai_summary_service.generate_page_summary(page_snapshot)
+                result.executed_steps.append(
+                    {
+                        "step": "ai_page_summary",
+                        "status": "passed",
+                        "artifact_path": page_summary["artifact_path"],
+                    }
+                )
+                result.artifacts["ai_page_summary"] = page_summary["artifact_path"]
+            except GainsAIClientError as exc:
+                result.executed_steps.append(
+                    {
+                        "step": "ai_page_summary",
+                        "status": "failed",
+                        "error": str(exc),
+                    }
+                )
+                logger.warning("AI page summary failed: %s", exc)
 
         if workflow_path:
             workflow_graph_dict = read_json(workflow_path, default={}) or {}
-            workflow_summary = self.ai_summary_service.generate_workflow_summary(workflow_graph_dict)
-            result.executed_steps.append(
-                {
-                    "step": "ai_workflow_summary",
-                    "status": "passed",
-                    "artifact_path": workflow_summary["artifact_path"],
-                }
-            )
-            result.artifacts["ai_workflow_summary"] = workflow_summary["artifact_path"]
+            try:
+                workflow_summary = self.ai_summary_service.generate_workflow_summary(workflow_graph_dict)
+                result.executed_steps.append(
+                    {
+                        "step": "ai_workflow_summary",
+                        "status": "passed",
+                        "artifact_path": workflow_summary["artifact_path"],
+                    }
+                )
+                result.artifacts["ai_workflow_summary"] = workflow_summary["artifact_path"]
+            except GainsAIClientError as exc:
+                result.executed_steps.append(
+                    {
+                        "step": "ai_workflow_summary",
+                        "status": "failed",
+                        "error": str(exc),
+                    }
+                )
+                logger.warning("AI workflow summary failed: %s", exc)
 
     def _capture_named_screenshot(self, file_name: str) -> str:
         screenshot_dir = self.artifact_manager.get_path("screenshots")

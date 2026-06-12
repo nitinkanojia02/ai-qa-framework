@@ -17,7 +17,8 @@ class GainsAIClient:
         self.enabled = ai_config.get("enabled", False)
         self.provider = ai_config.get("provider", "gains")
         self.endpoint = ai_config.get("endpoint", "")
-        self.token_env_var = ai_config.get("token_env_var", "")
+        raw_token_env_var = ai_config.get("token_env_var", "")
+        self.token_env_var = self._normalize_env_var_name(raw_token_env_var)
         self.model = ai_config.get("model", "default")
         self.request_timeout_seconds = ai_config.get("request_timeout_seconds", 60)
         self.retry_count = ai_config.get("retry_count", 2)
@@ -83,9 +84,26 @@ class GainsAIClient:
                 }
             except Exception as exc:
                 last_error = exc
-                logger.warning("GAINS AI call failed on attempt %s: %s", attempt, exc)
+                response_text = ""
+                status_code = ""
+                if isinstance(exc, requests.HTTPError) and exc.response is not None:
+                    status_code = str(exc.response.status_code)
+                    response_text = (exc.response.text or "")[:1000]
+                logger.warning(
+                    "GAINS AI call failed on attempt %s: %s | status=%s | response=%s",
+                    attempt,
+                    exc,
+                    status_code,
+                    response_text,
+                )
 
         raise GainsAIClientError(f"GAINS AI call failed after retries: {last_error}")
+
+    def _normalize_env_var_name(self, value: str) -> str:
+        normalized = (value or "").strip()
+        if normalized.startswith("${") and normalized.endswith("}"):
+            normalized = normalized[2:-1].strip()
+        return normalized
 
     def _extract_text(self, response_json: Dict[str, Any]) -> str:
         if isinstance(response_json, dict):

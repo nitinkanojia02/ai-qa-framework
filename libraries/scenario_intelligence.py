@@ -1,6 +1,7 @@
 from typing import Dict, List
 
 from libraries.ai_scenario_service import AIScenarioService
+from libraries.gains_ai_client import GainsAIClientError
 from utils.logger import get_logger
 
 logger = get_logger(__name__)
@@ -13,15 +14,15 @@ class ScenarioIntelligence:
         self.max_form_fields_for_positive = 5
 
     def build_scenarios(self, knowledge) -> List[Dict]:
-        if self.ai_scenario_service:
-            ai_scenarios = self._build_ai_scenarios(knowledge)
-            if ai_scenarios:
-                logger.info("Scenario intelligence using AI-generated scenarios: %s", len(ai_scenarios))
-                return ai_scenarios
+        if not self.ai_scenario_service:
+            raise GainsAIClientError("AI scenario generation requires an enabled AI client.")
 
-        fallback = self._build_minimal_fallback_scenarios(knowledge)
-        logger.info("Scenario intelligence fallback generated %s scenarios", len(fallback))
-        return fallback
+        ai_scenarios = self._build_ai_scenarios(knowledge)
+        if not ai_scenarios:
+            raise GainsAIClientError("AI scenario generation returned no scenarios.")
+
+        logger.info("Scenario intelligence using AI-generated scenarios: %s", len(ai_scenarios))
+        return ai_scenarios
 
     def _build_ai_scenarios(self, knowledge) -> List[Dict]:
         scenarios: List[Dict] = []
@@ -96,39 +97,6 @@ class ScenarioIntelligence:
                 if failure.metadata.get("page_name", "") == page.page_name or not failure.metadata
             ],
         }
-
-    def _build_minimal_fallback_scenarios(self, knowledge) -> List[Dict]:
-        scenarios: List[Dict] = []
-        for page in knowledge.pages:
-            scenarios.append(
-                {
-                    "title": f"Verify {page.page_name.replace('_', ' ')} page loads successfully",
-                    "objective": page.business_purpose or f"Verify the {page.page_name.replace('_', ' ')} page is accessible.",
-                    "scenario_type": "smoke",
-                    "scenario_category": "smoke",
-                    "workflow_type": page.page_type or "general",
-                    "risk_level": "medium",
-                    "preconditions": [
-                        "Application is reachable in the target environment.",
-                        f"User can access the {page.page_name.replace('_', ' ')} page.",
-                    ],
-                    "steps": [
-                        f"Navigate to the {page.page_name.replace('_', ' ')} page.",
-                        "Observe the page and verify the primary content is visible.",
-                    ],
-                    "expected_results": [
-                        "The page loads without unexpected errors.",
-                        "Primary actions, controls, and business content are visible.",
-                    ],
-                    "tags": self._base_tags(page, {"scenario_type": "smoke", "workflow_type": page.page_type or "general"}),
-                    "source_page": page.page_name,
-                    "module_name": page.module_name,
-                    "primary_entity": page.primary_entity,
-                    "linked_pages": [page.page_name],
-                    "generation_source": "fallback_scenario_generation",
-                }
-            )
-        return scenarios
 
     def _base_tags(self, page, scenario: Dict) -> List[str]:
         tags = ["ai-generated", scenario.get("scenario_type", "positive"), scenario.get("workflow_type", "general")]
