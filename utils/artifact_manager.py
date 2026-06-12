@@ -17,6 +17,8 @@ class ArtifactManager:
             "analytics": self.base_dir / "analytics",
             "execution": self.base_dir / "execution",
             "knowledge_graph": self.base_dir / "knowledge_graph",
+            "testcases": self.base_dir / "testcases",
+            "healing": self.base_dir / "healing",
         }
 
     def initialize(self) -> Dict[str, str]:

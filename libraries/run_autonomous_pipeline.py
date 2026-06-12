@@ -8,10 +8,16 @@ from libraries.config_loader import ConfigLoader
 from libraries.exploration_analytics import ExplorationAnalytics
 from libraries.gains_ai_client import GainsAIClient
 from libraries.intelligent_explorer import IntelligentExplorer
+from libraries.knowledge_store import KnowledgeStore
 from libraries.locator_ranker import LocatorRanker
 from libraries.loop_detector import LoopDetector
+from libraries.healing_applier import HealingApplier
+from libraries.healing_suggester import HealingSuggester
+from libraries.manual_test_case_generator import ManualTestCaseGenerator
 from libraries.navigation_predictor import NavigationPredictor
 from libraries.page_analyzer import PageAnalyzer
+from libraries.robot_executor import RobotExecutor
+from libraries.robot_test_generator import RobotTestGenerator
 from libraries.self_healing_locator import SelfHealingLocator
 from libraries.workflow_agent import WorkflowAgent
 from libraries.workflow_memory import WorkflowMemory
@@ -34,6 +40,12 @@ class AutonomousPipeline:
         self.locator_ranker: Optional[LocatorRanker] = None
         self.self_healing_locator: Optional[SelfHealingLocator] = None
         self.workflow_memory: Optional[WorkflowMemory] = None
+        self.knowledge_store: Optional[KnowledgeStore] = None
+        self.manual_test_case_generator: Optional[ManualTestCaseGenerator] = None
+        self.robot_test_generator: Optional[RobotTestGenerator] = None
+        self.robot_executor: Optional[RobotExecutor] = None
+        self.healing_suggester: Optional[HealingSuggester] = None
+        self.healing_applier: Optional[HealingApplier] = None
         self.workflow_agent: Optional[WorkflowAgent] = None
         self.navigation_predictor: Optional[NavigationPredictor] = None
         self.loop_detector: Optional[LoopDetector] = None
@@ -60,6 +72,12 @@ class AutonomousPipeline:
         self.locator_ranker = LocatorRanker(self.artifact_manager, self.configs["locator"])
         self.self_healing_locator = SelfHealingLocator()
         self.workflow_memory = WorkflowMemory(self.artifact_manager, app_name, start_url)
+        self.knowledge_store = KnowledgeStore(self.artifact_manager, app_name, start_url)
+        self.manual_test_case_generator = ManualTestCaseGenerator(self.artifact_manager)
+        self.robot_test_generator = RobotTestGenerator(self.artifact_manager)
+        self.robot_executor = RobotExecutor(self.artifact_manager)
+        self.healing_suggester = HealingSuggester()
+        self.healing_applier = HealingApplier()
         self.workflow_agent = WorkflowAgent()
         self.navigation_predictor = NavigationPredictor()
         self.loop_detector = LoopDetector()
@@ -128,8 +146,12 @@ class AutonomousPipeline:
                         "page_name": page_snapshot.page_analysis.page_name,
                         "title": page_snapshot.page_analysis.title,
                         "url": page_snapshot.page_analysis.url,
+                        "semantic_page_type": page_snapshot.page_analysis.metadata.get("semantic_page_type", ""),
+                        "module_name": page_snapshot.page_analysis.metadata.get("module_name", ""),
+                        "primary_entity": page_snapshot.page_analysis.metadata.get("primary_entity", ""),
                     }
                 )
+                self.knowledge_store.add_page_snapshot(page_snapshot)
                 result.artifacts["page_analysis_dom"] = page_snapshot.dom_path or ""
                 result.artifacts["page_analysis_screenshot"] = page_snapshot.screenshot_path or ""
 
@@ -141,6 +163,10 @@ class AutonomousPipeline:
                         "status": "passed",
                         "locator_count": len(locator_records),
                     }
+                )
+                self.knowledge_store.add_locator_records(
+                    page_snapshot.page_analysis.page_name,
+                    locator_records,
                 )
 
             healing_test_result = self._run_self_healing_smoke_check(page, locator_records)
@@ -163,6 +189,9 @@ class AutonomousPipeline:
                 )
 
                 workflow_path = self.workflow_memory.persist()
+                self.knowledge_store.add_workflow_transitions(
+                    [step.to_dict() for step in self.workflow_memory.graph.steps]
+                )
                 result.artifacts["workflow_graph"] = workflow_path
 
                 analytics_summary = self.exploration_analytics.build_summary(
@@ -178,8 +207,147 @@ class AutonomousPipeline:
 
             self._run_ai_summaries(result, page_snapshot, workflow_path)
 
-            result.status = "phase_5_completed"
+            manual_test_case_artifacts = self.manual_test_case_generator.generate_from_knowledge(
+                self.knowledge_store.knowledge
+            )
+            result.executed_steps.append(
+                {
+                    "step": "manual_test_case_generation",
+                    "status": "passed",
+                    "generated_count": manual_test_case_artifacts["count"],
+                    "artifact_path": manual_test_case_artifacts["json_path"],
+                }
+            )
+            result.artifacts["manual_test_cases_json"] = manual_test_case_artifacts["json_path"]
+            result.artifacts["manual_test_cases_markdown"] = manual_test_case_artifacts["markdown_path"]
+
+            robot_generation_artifacts = self.robot_test_generator.generate_from_manual_test_cases(
+                manual_test_case_artifacts,
+                self.knowledge_store.knowledge,
+            )
+            result.executed_steps.append(
+                {
+                    "step": "robot_test_generation",
+                    "status": "passed",
+                    "generated_count": robot_generation_artifacts["count"],
+                    "suite_path": robot_generation_artifacts["suite_path"],
+                    "resource_path": robot_generation_artifacts["resource_path"],
+                }
+            )
+            result.artifacts["generated_robot_suite"] = robot_generation_artifacts["suite_path"]
+            result.artifacts["generated_robot_resource"] = robot_generation_artifacts["resource_path"]
+            result.artifacts["generated_robot_variables"] = robot_generation_artifacts.get("variables_path", "")
+
+            robot_execution_artifacts = self.robot_executor.execute_generated_suite(
+                robot_generation_artifacts["suite_path"]
+            )
+            failure_analysis = robot_execution_artifacts.get("failure_analysis", {})
+            result.executed_steps.append(
+                {
+                    "step": "robot_test_execution",
+                    "status": robot_execution_artifacts.get("status", "unknown"),
+                    "reason": robot_execution_artifacts.get("reason", ""),
+                    "return_code": robot_execution_artifacts.get("return_code", ""),
+                    "run_directory": robot_execution_artifacts.get("run_directory", ""),
+                    "failure_count": failure_analysis.get("failure_count", 0),
+                }
+            )
+            for artifact_key in [
+                "run_directory",
+                "output_xml",
+                "log_html",
+                "report_html",
+                "stdout",
+                "stderr",
+            ]:
+                if robot_execution_artifacts.get(artifact_key):
+                    result.artifacts[f"robot_execution_{artifact_key}"] = robot_execution_artifacts[artifact_key]
+            if failure_analysis:
+                result.metadata["robot_failure_count"] = str(failure_analysis.get("failure_count", 0))
+                result.artifacts["robot_failure_analysis"] = failure_analysis
+                self.knowledge_store.add_failure_records(started_at, failure_analysis)
+                self.knowledge_store.update_locator_success_metrics(failure_analysis)
+
+            healing_artifact_path = Path(self.artifact_manager.get_path("healing")) / "healing_suggestions.json"
+            healing_result = self.healing_suggester.generate(
+                self.knowledge_store.knowledge,
+                started_at,
+                healing_artifact_path.as_posix(),
+            )
+            added_suggestions = self.knowledge_store.add_healing_suggestions(
+                healing_result["suggestions"]
+            )
+            result.executed_steps.append(
+                {
+                    "step": "healing_suggestion_generation",
+                    "status": "passed",
+                    "generated_count": healing_result.get("count", 0),
+                    "added_to_knowledge": added_suggestions,
+                    "artifact_path": healing_result.get("artifact_path", ""),
+                }
+            )
+            result.artifacts["healing_suggestions"] = healing_result.get("artifact_path", "")
+
+            healing_apply_result = self.healing_applier.apply_top_suggestion(
+                robot_generation_artifacts["resource_path"],
+                healing_result,
+            )
+            result.executed_steps.append(
+                {
+                    "step": "healing_application",
+                    "status": healing_apply_result.get("status", "unknown"),
+                    "reason": healing_apply_result.get("reason", ""),
+                    "suggestion_id": healing_apply_result.get("suggestion_id", ""),
+                    "backup_path": healing_apply_result.get("backup_path", ""),
+                }
+            )
+            if healing_apply_result.get("suggestion_id"):
+                self.knowledge_store.update_healing_suggestion_status(
+                    healing_apply_result["suggestion_id"],
+                    "applied" if healing_apply_result.get("applied") else "skipped",
+                    {
+                        "healing_application_reason": healing_apply_result.get("reason", ""),
+                        "backup_path": healing_apply_result.get("backup_path", ""),
+                    },
+                )
+            result.artifacts["healing_applied_resource"] = healing_apply_result.get("resource_path", "")
+            result.artifacts["healing_backup_resource"] = healing_apply_result.get("backup_path", "")
+
+            if healing_apply_result.get("applied"):
+                retry_execution_artifacts = self.robot_executor.execute_generated_suite(
+                    robot_generation_artifacts["suite_path"]
+                )
+                retry_failure_analysis = retry_execution_artifacts.get("failure_analysis", {})
+                result.executed_steps.append(
+                    {
+                        "step": "robot_test_execution_retry",
+                        "status": retry_execution_artifacts.get("status", "unknown"),
+                        "reason": retry_execution_artifacts.get("reason", ""),
+                        "return_code": retry_execution_artifacts.get("return_code", ""),
+                        "run_directory": retry_execution_artifacts.get("run_directory", ""),
+                        "failure_count": retry_failure_analysis.get("failure_count", 0),
+                    }
+                )
+                for artifact_key in [
+                    "run_directory",
+                    "output_xml",
+                    "log_html",
+                    "report_html",
+                    "stdout",
+                    "stderr",
+                ]:
+                    if retry_execution_artifacts.get(artifact_key):
+                        result.artifacts[f"robot_retry_{artifact_key}"] = retry_execution_artifacts[artifact_key]
+                if retry_failure_analysis:
+                    result.artifacts["robot_retry_failure_analysis"] = retry_failure_analysis
+                    self.knowledge_store.add_failure_records(f"{started_at}_retry", retry_failure_analysis)
+                    self.knowledge_store.update_locator_success_metrics(retry_failure_analysis)
+
+            result.status = "phase_7_completed"
             result.completed_at = utc_now_iso()
+            self.knowledge_store.add_execution_record(result, run_id=started_at)
+            knowledge_path = self.knowledge_store.persist()
+            result.artifacts["application_knowledge"] = knowledge_path
 
             execution_output = str(
                 Path(self.artifact_manager.get_path("execution")) / "phase_5_execution_result.json"
@@ -193,6 +361,11 @@ class AutonomousPipeline:
             result.status = "failed"
             result.completed_at = utc_now_iso()
             result.errors.append(str(exc))
+
+            if self.knowledge_store:
+                self.knowledge_store.add_execution_record(result, run_id=started_at)
+                knowledge_path = self.knowledge_store.persist()
+                result.artifacts["application_knowledge"] = knowledge_path
 
             failure_output = str(
                 Path(self.artifact_manager.get_path("execution")) / "phase_5_execution_result.json"

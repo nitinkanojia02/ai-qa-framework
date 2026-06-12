@@ -1,0 +1,43 @@
+application:
+  name: Example Application
+  base_url: "https://example.test/app"
+  environment: qa
+
+authentication:
+  enabled: true
+  login_url: ""
+  username: "${APP_USERNAME}"
+  password: "${APP_PASSWORD}"
+
+  pre_login_click_required: false
+  pre_login_click_selector: ""
+  pre_login_click_type: "xpath"
+
+  username_selector: "//input[@placeholder='User Name']"
+  username_selector_type: "xpath"
+
+  password_selector: "//input[@placeholder='Password']"
+  password_selector_type: "xpath"
+
+  submit_selector: "//button[contains(normalize-space(.), 'Sign In')]"
+  submit_selector_type: "xpath"
+
+  success_url_contains: ""
+  success_selector: ""
+  success_selector_type: "xpath"
+  post_login_wait_seconds: 5
+
+execution:
+  capture_screenshots: true
+  save_dom_snapshot: true
+  output_base_dir: artifacts
+  analyze_landing_page: true
+  max_exploration_actions: 5
+
+features:
+  enable_ai: true
+  enable_autonomous_exploration: true
+  enable_workflow_learning: true
+  enable_robot_generation: false
+  enable_self_healing: true
+  enable_page_analysis: true
