@@ -24,7 +24,7 @@ class RobotTestGenerator:
     def generate_from_manual_test_cases(self, manual_test_case_artifacts: Dict[str, str], knowledge) -> Dict[str, str]:
         test_cases = manual_test_case_artifacts.get("test_cases", [])
         if not test_cases:
-            test_cases = self._build_fallback_test_cases(knowledge)
+            raise ValueError("Robot test generation requires AI-generated manual test cases.")
 
         knowledge_index = self._build_knowledge_index(knowledge)
         root_resource_content = self._build_root_resource_content(knowledge_index)
@@ -803,14 +803,3 @@ class RobotTestGenerator:
         cleaned = " ".join(value.replace("_", " ").split())
         return cleaned or "Generated Workflow"
 
-    def _build_fallback_test_cases(self, knowledge) -> List[Dict]:
-        fallback_steps = ["Observe the discovered landing page.", "Verify important elements are visible."]
-        fallback_results = ["The page is reachable.", "Core controls are displayed."]
-        return [
-            {
-                "title": f"Validate discovered {knowledge.application_name} landing workflow",
-                "tags": ["ai-generated", "robot-generated", "smoke"],
-                "steps": fallback_steps,
-                "expected_results": fallback_results,
-            }
-        ]

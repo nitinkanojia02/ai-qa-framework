@@ -42,9 +42,8 @@ The current implementation is stronger on the exploration, analysis, locator, an
 - `libraries/` - core Python orchestration and framework logic
 - `models/` - structured models for analysis, locators, workflows, and execution
 - `config/` - framework, browser, locator, AI, and environment configuration
-- `prompts/` - prompt templates for generation and repair tasks
-- `artifacts/` - runtime outputs such as screenshots, workflow data, and analytics
-- `tests/` and `resources/` - automation assets and Robot-facing scaffolding
+- `data/prompts/` - prompt templates used by AI generation and summary services
+- `artifacts/` - runtime outputs such as screenshots, workflow data, analytics, generated tests, and execution results
 
 ## Architecture and planning docs
 
@@ -76,11 +75,11 @@ The pipeline now also generates manual test case artifacts to:
 - `artifacts/testcases/generated_manual_test_cases.json`
 - `artifacts/testcases/generated_manual_test_cases.md`
 
-Manual test generation is now AI-first where enabled:
+Manual test generation is AI-driven:
 - Playwright discovery and persisted knowledge are packaged as exploration evidence
 - AI generates structured scenarios from evidence using prompt-driven reasoning
 - the framework validates, normalizes, stores, and converts those scenarios into manual tests
-- fallback smoke-only generation is used only when AI scenario output is unavailable
+- if AI scenario generation fails or returns no scenarios, generation stops explicitly instead of falling back to heuristic test creation
 
 The manual test generation layer now expands discovered knowledge into richer scenario sets such as:
 - positive scenarios
