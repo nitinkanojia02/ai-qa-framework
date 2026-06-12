@@ -38,6 +38,6 @@ features:
   enable_ai: true
   enable_autonomous_exploration: true
   enable_workflow_learning: true
-  enable_robot_generation: false
+  enable_robot_generation: true
   enable_self_healing: true
   enable_page_analysis: true
